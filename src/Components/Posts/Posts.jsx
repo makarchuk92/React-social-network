@@ -8,11 +8,12 @@ const Posts = () => {
       {id:'Sergei', text:'I am Sergei and my profession It', LikeUp:'11'},
       {id:'Alexander', text:'I am Alexander and my profession It', LikeUp:'13'}
    ]
+
+   let postsElements = postData.map ( post => <Post text={post.text} LikeUp={post.LikeUp}/>)
+
    return (
       <div className={A.Item}> 
-         <Post text={postData[0].text} LikeUp={postData[0].LikeUp}/>
-         <Post text={postData[1].text} LikeUp={postData[1].LikeUp}/>
-         <Post text={postData[2].text} LikeUp={postData[2].LikeUp}/>
+         {postsElements}
       </div>
    )
  }
