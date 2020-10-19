@@ -1,0 +1,9 @@
+.messagesItem h1 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 3rem;
+}
+
+.messagesItem:hover h1 {
+  cursor: pointer;
+}

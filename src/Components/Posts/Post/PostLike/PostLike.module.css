@@ -1,0 +1,15 @@
+.Offer__Like {
+  margin: 0.2rem 0 ;
+}
+.Offer__Like a {
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid #fff ;
+  padding: 0.15rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+ 

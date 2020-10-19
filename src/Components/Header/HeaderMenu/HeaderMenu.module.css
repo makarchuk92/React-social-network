@@ -1,0 +1,22 @@
+
+ .Sidebar {
+   margin-top: 5rem;
+ }
+ 
+ .Sidebar__item li {
+   padding-bottom: 20px;
+ }
+ 
+ .Sidebar__text {
+   font-size: 25px;
+   color: rgb(206, 200, 200);
+   transition: all 0.5s ease;
+ }
+ 
+ .Sidebar__text:hover {
+   color: #fff;
+ }
+ 
+.activeLink {
+   color: darkorange;
+ }

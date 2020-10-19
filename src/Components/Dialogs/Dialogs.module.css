@@ -1,0 +1,16 @@
+.dialogs {
+  padding: 5rem 0;
+  display: flex;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.messages {
+  background-color: rgba(255, 255, 255, 0.822);
+  width: 100%;
+  padding: 2rem 3rem 0 3rem;
+}
+

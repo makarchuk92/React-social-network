@@ -1,0 +1,22 @@
+
+ul, li {
+  list-style: none;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.app-wrapper { 
+  background-color: rgb(73, 26, 184);
+}
+
+.wrapper-container {
+  width: 1140px;
+  margin: 0 auto;
+  border: 1px dashed rgba(201, 157, 243, 0.089);
+}
+
+
+

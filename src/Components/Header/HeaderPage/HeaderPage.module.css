@@ -1,0 +1,8 @@
+.Content_img {
+    text-align: center;
+ }
+ 
+ .Content_img img{
+  opacity: 0.6;
+   max-width: 70%;
+}

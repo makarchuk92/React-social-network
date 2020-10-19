@@ -1,0 +1,13 @@
+import React from 'react';
+import MP from './PostLike.module.css'
+
+
+const PostLike = (props) => {
+   return (
+      <div className={MP.Offer__Like}>
+        <a>Like</a> {props.LikeUp}  
+      </div>    
+   )
+ }
+
+ export default PostLike;
