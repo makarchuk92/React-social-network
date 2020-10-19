@@ -5,7 +5,8 @@ import MP from './PostLike.module.css'
 const PostLike = (props) => {
    return (
       <div className={MP.Offer__Like}>
-        <a>Like</a> {props.LikeUp}  
+        {/* <a href='#L'>Like</a> {props.LikeUp}   */}
+        <button>Like</button> {props.LikeUp}  
       </div>    
    )
  }

@@ -8,8 +8,14 @@ a {
   text-decoration: none;
 }
 
+button:focus {
+	outline: none;
+}
+ 
+
 .app-wrapper { 
-  background-color: rgb(73, 26, 184);
+  /* background-color: rgb(73, 26, 184);  */
+   background: linear-gradient(96deg, rgba(73, 26, 184, 0.904) 0%, rgba(73, 26, 184,1) 100%);
 }
 
 .wrapper-container {
