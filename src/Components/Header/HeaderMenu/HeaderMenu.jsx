@@ -1,19 +1,19 @@
 import React from 'react';
-import H from './HeaderMenu.module.css';
+import module from './HeaderMenu.module.css';
 import {NavLink} from 'react-router-dom'
 
 const HeaderMenu = () => {
    return (
-        <div className={H.Sidebar}>
-          <ul className={H.Sidebar__item}>
+        <div className={module.Sidebar}>
+          <ul className={module.Sidebar__item}>
             <li>
-              <NavLink to='/listJunior' className={H.Sidebar__text} activeClassName={H.activeLink}>Junior</NavLink> 
+              <NavLink to='/Junior' className={module.Sidebar__text} activeClassName={module.activeLink}>Junior</NavLink> 
             </li>
             <li>
-              <NavLink to='/ListMidle' className={H.Sidebar__text} activeClassName={H.activeLink}>Midle</NavLink>
+              <NavLink to='/Midle' className={module.Sidebar__text} activeClassName={module.activeLink}>Midle</NavLink>
             </li>
             <li>
-              <NavLink to='/ListSenior' className={H.Sidebar__text} activeClassName={H.activeLink}>Senior</NavLink>
+              <NavLink to='/Senior' className={module.Sidebar__text} activeClassName={module.activeLink}>Senior</NavLink>
             </li>
           </ul>
         </div>

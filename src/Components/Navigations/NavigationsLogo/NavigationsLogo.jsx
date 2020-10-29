@@ -1,9 +1,9 @@
 import React from 'react';
-import N from './NavigationsLogo.module.css';
+import module from './NavigationsLogo.module.css';
 
 const NavigationsLogo = () => {
    return (
-       <img className={N.Nav__img} src='https://upavla.ru/wp-content/uploads/2018/12/logo-mini5.png' alt='Logo'></img>
+       <img className={module.Nav__img} src='https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0015/4197/brand.gif?itok=GeU1q5PR' alt='Logo'></img>
    )
  }
 

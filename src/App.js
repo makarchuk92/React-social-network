@@ -9,7 +9,7 @@ import ListMidle from "./Components/TextItemList/ListMidle/ListMidle.jsx";
 import ListSenior from "./Components/TextItemList/ListSenior/ListSenior.jsx";
 import { BrowserRouter, Route } from "react-router-dom";
 
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -17,13 +17,15 @@ const App = () => {
           <Navigations />
           <Header />
           <div>
-            <Route path="/dialogs" component={Dialogs} />
-            <Route path="/posts" component={Posts} />
+            <Route path="/dialogs" render={ () =>  <Dialogs 
+              state={props.state.dialogs} /> }/>
+            <Route path="/posts" render={() => <Posts 
+               state={props.state.posts} /> }/>
           </div>
           <div>
-            <Route path="/listJunior" component={ListJunior} />
-            <Route path="/ListMidle" component={ListMidle} />
-            <Route path="/ListSenior" component={ListSenior} />
+            <Route path="/Junior" component={ListJunior} />
+            <Route path="/Midle" component={ListMidle} />
+            <Route path="/Senior" component={ListSenior} />
           </div>
         </div>
       </div>

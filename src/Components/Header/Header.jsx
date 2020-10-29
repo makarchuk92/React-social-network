@@ -1,13 +1,13 @@
 import React from 'react';
 import HeaderMenu from './HeaderMenu/HeaderMenu.jsx';
 import HeaderPage from './HeaderPage/HeaderPage.jsx'
-import H from './Header.module.css';
+import module from './Header.module.css';
 
 const Header = () => {
    return (
-    <div className={H.About}>
+    <div className={module.About}>
       <HeaderMenu />
-      <div className={H.Content}>
+      <div className={module.Content}>
         <HeaderPage />  
       </div>
     </div>

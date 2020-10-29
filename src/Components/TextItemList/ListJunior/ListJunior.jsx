@@ -1,9 +1,9 @@
 import React from "react";
-import LG from "./ListJunior.module.css";
+import module from "./ListJunior.module.css";
 
 const ListJunior = (props) => {
   return (
-    <div className={LG.Text}>
+    <div className={module.Text}>
       <h1>
          <img alt='It' src='https://s.dou.ua/storage-files/pm-300.png'></img>
         Jr An understanding of the following basics is required: Client / server

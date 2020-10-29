@@ -1,9 +1,9 @@
 import React from "react";
-import LM from "./ListMidle.module.css";
+import module from "./ListMidle.module.css";
 
 const ListMidle = (props) => {
   return (
-    <div className={LM.Text}>
+    <div className={module.Text}>
       <h1>
         <img alt="It" src="https://s.dou.ua/storage-files/pm-300.png"></img>
         Middle Version control. Here it is necessary to clarify that we you need

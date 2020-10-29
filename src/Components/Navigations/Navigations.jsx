@@ -1,11 +1,11 @@
 import React from 'react';
 import NavigationsLogo from './NavigationsLogo/NavigationsLogo.jsx'
 import NavigationsLi from './NavigationsLi/NavigationsLi.jsx'
-import N from './Navigations.module.css';
+import module from './Navigations.module.css';
 
 const Navigations = () => {
    return (
-     <div className={N.Nav}>
+     <div className={module.Nav}>
         <NavigationsLogo />  
         <NavigationsLi />
      </div>
