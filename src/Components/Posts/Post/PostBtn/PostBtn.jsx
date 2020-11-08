@@ -2,10 +2,17 @@ import React from 'react';
 import module from './PostBtn.module.css'
 
 
-const PostBtn = () => {
+const PostBtn = (props) => {
+
+  let moreDetalis = () => {
+    alert ('Hello, my friend')
+  }
+
    return (
       <div>
-        <button type="button" className={module.btn}>more detalis</button>
+        <button onClick={ moreDetalis }  type="button" className={module.btn}>
+          more detalis
+        </button>
       </div>    
    )
  }

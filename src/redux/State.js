@@ -1,6 +1,8 @@
+import {rerenderEntireTree} from "./../render"
+
 let state = {
   dialogs: {
-    dialogsData: [
+    dialogsName: [
       { id: "Andrey", name: "- Andrey -" },
       { id: "Sergey", name: "- Sergey -" },
       { id: "Sasha", name: "- Sasha -" },
@@ -9,11 +11,9 @@ let state = {
     ],
     
     dialogsMessage: [
-      { id: "Andrey", message: "Hello, i am Andrey" },
-      { id: "Sergey", message: "Hello, i am Sergey" },
-      { id: "Sasha", message: "Hello, i am Sasha" },
-      { id: "Aleks", message: "Hello, i am Aleks" },
-      { id: "Anastasia", message: "Hello, i am Anastasia" },
+      { id: 1, message: "Hello, i am Andrey" },
+      { id: 2, message: "Hello, i am Sergey" },
+
     ],
   },
   
@@ -23,8 +23,18 @@ let state = {
       { id: "Sergei", text: "I am Sergei and my profession It", LikeUp: "11" },
       { id: "Alexander", text: "I am Alexander and my profession It", LikeUp: "13" },
     ]
-  }   
-
+  } 
 }
+
+export let addMessage = (messageText) => {
+
+  let newMessage = {
+    id: 3,
+    message: messageText,
+  }
+  state.dialogs.dialogsMessage.push(newMessage)
+  rerenderEntireTree(state)
+}
+
 
 export default state

@@ -10,4 +10,10 @@
   font-weight: 700;
   background-color: rgba(0, 0, 0, 0.37);
   color: #fff;
+  transition: all 0.5s ease;
+}
+
+.btn:hover {
+  background-color: rgba(146, 145, 145, 0.37);
+  color: rgba(255, 255, 255, 0.616);
 }

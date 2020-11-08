@@ -7,29 +7,32 @@ import Posts from "./Components/Posts/Posts.jsx";
 import ListJunior from "./Components/TextItemList/ListJunior/ListJunior.jsx";
 import ListMidle from "./Components/TextItemList/ListMidle/ListMidle.jsx";
 import ListSenior from "./Components/TextItemList/ListSenior/ListSenior.jsx";
-import { BrowserRouter, Route } from "react-router-dom";
+import News from "./Components/News/News"
+import {Route } from "react-router-dom";
+
 
 const App = (props) => {
   return (
-    <BrowserRouter>
       <div className="app-wrapper">
         <div className="wrapper-container">
           <Navigations />
           <Header />
           <div>
             <Route path="/dialogs" render={ () =>  <Dialogs 
-              state={props.state.dialogs} /> }/>
+              state={props.state.dialogs} addMessage={props.addMessage} /> }/>
             <Route path="/posts" render={() => <Posts 
                state={props.state.posts} /> }/>
           </div>
           <div>
-            <Route path="/Junior" component={ListJunior} />
-            <Route path="/Midle" component={ListMidle} />
-            <Route path="/Senior" component={ListSenior} />
+            <Route path="/Junior" render={ () => <ListJunior />} />
+            <Route path="/Midle" render={ () => <ListMidle />} />
+            <Route path="/Senior" render={ () => <ListSenior />} />
+          </div>
+          <div>
+            <Route path="/News" render={ () => <News />} />
           </div>
         </div>
       </div>
-    </BrowserRouter>
   );
 };
 
