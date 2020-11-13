@@ -18,7 +18,3 @@
 .messagesItem:hover h1 {
   cursor: pointer;
 }
-
-.messagesItem:nth-child(2n)  {
- 
-}

@@ -19,9 +19,18 @@ const App = (props) => {
           <Header />
           <div>
             <Route path="/dialogs" render={ () =>  <Dialogs 
-              state={props.state.dialogs} addMessage={props.addMessage} /> }/>
+              state={props.state.dialogs}
+              addMessage={props.addMessage}
+              newMessageText={props.state.dialogs.newMessageText}
+              updateNewMessageText={props.updateNewMessageText}
+              /> }/>
             <Route path="/posts" render={() => <Posts 
-               state={props.state.posts} /> }/>
+               state={props.state.posts}
+               addPost={props.addPost}
+               newPostText={props.state.posts.newPostText} 
+               updateNewPostText={props.updateNewPostText}
+              
+               /> }/>
           </div>
           <div>
             <Route path="/Junior" render={ () => <ListJunior />} />

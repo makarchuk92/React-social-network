@@ -15,6 +15,7 @@ const Post = (props) => {
         <PostLike /> {props.LikeUp}
       </div>
     </div>
+    
   );
 };
 

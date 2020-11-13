@@ -8,7 +8,7 @@ const News = (props) => {
 
    let addNews =  () => { 
       let textNews = addNewsElements.current.value
-      alert(textNews)
+      
    }
 
    return (
