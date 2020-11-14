@@ -31,46 +31,74 @@ let store = {
     return this._state;
   },
 
-  rerenderEntireTree() {
+  _rerenderEntireTree() {
 
   },
 
-  addMessage() {
-    let newMessage = {
-      id: 3,
-      message: this._state.dialogs.newMessageText,
-    }
-    this._state.dialogs.dialogsMessage.push(newMessage)
-    this._state.dialogs.newMessageText='';
-    this._rerenderEntireTree(this._state)
-  },
+  // _addMessage() {
+  //   let newMessage = {
+  //     id: 3,
+  //     message: this._state.dialogs.newMessageText,
+  //   }
+  //   this._state.dialogs.dialogsMessage.push(newMessage)
+  //   this._state.dialogs.newMessageText='';
+  //   this._rerenderEntireTree(this._state)
+  // },
 
-  updateNewMessageText(messageText) {
-    this._state.dialogs.newMessageText = messageText
-    this._rerenderEntireTree(this._state)
-  },
+  // _updateNewMessageText(messageText) {
+  //   this._state.dialogs.newMessageText = messageText
+  //   this._rerenderEntireTree(this._state)
+  // },
 
-  addPost() {
 
-    let newPost = {
-      id: 3,
-      text: this._state.posts.newPostText,
-      LikeUp: 0
-    }
-    this._state.posts.postData.push(newPost)
-    this._state.posts.newPostText = '';
+  // addPost() {
+
+  //   let newPost = {
+  //     id: 3,
+  //     text: this._state.posts.newPostText,
+  //     LikeUp: 0
+  //   }
+  //   this._state.posts.postData.push(newPost)
+  //   this._state.posts.newPostText = '';
       
-    this._rerenderEntireTree(this._state)
-  },
-  updateNewPostText(newText) {
-    this._state.posts.newPostText = newText
-    this._rerenderEntireTree(this._state)
+  //   this._rerenderEntireTree(this._state)
+  // },
+  // updateNewPostText(newText) {
+  //   this._state.posts.newPostText = newText
+  //   this._rerenderEntireTree(this._state)
+  // },
+
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+
+      let newPost = {
+        id: 3,
+        text: this._state.posts.newPostText,
+        LikeUp: 0
+      }
+      this._state.posts.postData.push(newPost)
+      this._state.posts.newPostText = '';
+        
+      this._rerenderEntireTree(this._state)
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.posts.newPostText = action.newText
+      this._rerenderEntireTree(this._state)
+    }
+
+    if (action.type === 'ADD-MESSAGE') {
+      let newMessage = {
+        id: 3,
+        message: this._state.dialogs.newMessageText,
+      }
+      this._state.dialogs.dialogsMessage.push(newMessage)
+      this._state.dialogs.newMessageText='';
+      this._rerenderEntireTree(this._state)
+    } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {}
   },
 
   subscribe(observer) {
     this._rerenderEntireTree = observer
   },
-
 
 }
 
