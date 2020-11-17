@@ -1,3 +1,8 @@
+import dialogsReducer from "./dialogsReducer"
+import postsReducer from  "./postsReducer"
+
+
+
 let store = {
   _state: {
     dialogs: {
@@ -14,7 +19,7 @@ let store = {
         { id: 2, message: "Hello, i am Sergey" },
       ],
   
-      newMessageText: 'Hi,'
+      newMessageText: ''
     },
     
     posts: {
@@ -35,72 +40,23 @@ let store = {
 
   },
 
-  // _addMessage() {
-  //   let newMessage = {
-  //     id: 3,
-  //     message: this._state.dialogs.newMessageText,
-  //   }
-  //   this._state.dialogs.dialogsMessage.push(newMessage)
-  //   this._state.dialogs.newMessageText='';
-  //   this._rerenderEntireTree(this._state)
-  // },
-
-  // _updateNewMessageText(messageText) {
-  //   this._state.dialogs.newMessageText = messageText
-  //   this._rerenderEntireTree(this._state)
-  // },
-
-
-  // addPost() {
-
-  //   let newPost = {
-  //     id: 3,
-  //     text: this._state.posts.newPostText,
-  //     LikeUp: 0
-  //   }
-  //   this._state.posts.postData.push(newPost)
-  //   this._state.posts.newPostText = '';
-      
-  //   this._rerenderEntireTree(this._state)
-  // },
-  // updateNewPostText(newText) {
-  //   this._state.posts.newPostText = newText
-  //   this._rerenderEntireTree(this._state)
-  // },
-
   dispatch(action) {
-    if (action.type === 'ADD-POST') {
+    this._state.posts = postsReducer(this._state.posts, action)
+    this._state.dialogs = dialogsReducer(this._state.dialogs, action)
 
-      let newPost = {
-        id: 3,
-        text: this._state.posts.newPostText,
-        LikeUp: 0
-      }
-      this._state.posts.postData.push(newPost)
-      this._state.posts.newPostText = '';
-        
-      this._rerenderEntireTree(this._state)
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-      this._state.posts.newPostText = action.newText
-      this._rerenderEntireTree(this._state)
-    }
-
-    if (action.type === 'ADD-MESSAGE') {
-      let newMessage = {
-        id: 3,
-        message: this._state.dialogs.newMessageText,
-      }
-      this._state.dialogs.dialogsMessage.push(newMessage)
-      this._state.dialogs.newMessageText='';
-      this._rerenderEntireTree(this._state)
-    } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {}
+     this._rerenderEntireTree(this._state)
   },
 
   subscribe(observer) {
     this._rerenderEntireTree = observer
-  },
+  }
 
 }
+
+
+
+
+
 
 
 
