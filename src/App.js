@@ -19,10 +19,10 @@ const App = (props) => {
           <Header />
           <div>
             <Route path="/dialogs" render={ () =>  <DialogsContainer 
-              store={props.store}
+              
               /> }/>
             <Route path="/posts" render={() => <PostsContainer
-              store={props.store} 
+              
                /> }/>
           </div>
           <div>

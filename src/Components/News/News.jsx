@@ -2,12 +2,12 @@ import React from "react"
 import module from "./News.module.css"
 
 
-const News = (props) => {
+const News = () => {
 
    let addNewsElements = React.createRef()
 
    let addNews =  () => { 
-      let textNews = addNewsElements.current.value
+      //let textNews = addNewsElements.current.value
       
    }
 

@@ -1,22 +1,53 @@
-import React from 'react';
-import {addPostActionCreator, updateNewPostTextActionCreator} from '../../redux/postsReducer'
-import Posts from './Posts'
+import { connect } from "react-redux";
+import {
+  addPostActionCreator,
+  updateNewPostTextActionCreator,
+} from "../../redux/postsReducer";
+import Posts from "./Posts";
+
+// const PostsContainer = () => {
+//   return ( <StoreContext.Consumer>
+//        { (store) => {
+//            let state = store.getState();
+//            let addPost = () => {
+//              store.dispatch(addPostActionCreator());
+//            };
+         
+//            let onPostChange = (postText) => {
+//              store.dispatch(updateNewPostTextActionCreator(postText));
+//            };
+//         return <Posts
+//         updateNewPostText={onPostChange}
+//         addPost={addPost}
+//         postData={state.posts.postData}
+//         newPostText={state.posts.newPostText}
+//         state={state.posts}
+//       />}
+//        }  
+//     </StoreContext.Consumer>
+//   );
+// };
 
 
+const mapStateToProps = (state) => {
+  return {
+    postData: state.posts.postData,
+    newPostText: state.posts.newPostText,
+    state: state.posts
+  }
+}
 
-const PostsContainer = (props) => { 
-   let state = props.store.getState()
-   let addPost = () => {
-      props.store.dispatch(addPostActionCreator())    
-   }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateNewPostText: (postText) => {
+      dispatch(updateNewPostTextActionCreator(postText));
+    },
+    addPost: () => {
+      dispatch(addPostActionCreator());
+    }
+  }
+}
 
-   let onPostChange = (postText) => {
-      props.store.dispatch(updateNewPostTextActionCreator(postText));
-   }
+const PostsContainer = connect(mapStateToProps, mapDispatchToProps) (Posts)
 
-   return <Posts updateNewPostText={onPostChange} addPost={addPost} postData={state.posts.postData} 
-    newPostText={state.posts.newPostText} state={state.posts}
-   /> 
- }
-
- export default PostsContainer;
+export default PostsContainer;

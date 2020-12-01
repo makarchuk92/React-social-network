@@ -6,16 +6,17 @@ import module from "./Dialogs.module.css";
 
 const Dialogs = (props) => {
   let dialogsElements = props.state.dialogsName.map((dialog) => (
-    <DialogsContacts name={dialog.name} id={dialog.id} />
+    <DialogsContacts name={dialog.name} id={dialog.id} key={dialog.id} />
   ));
   let messagesElement = props.state.dialogsMessage.map((messages) => (
-    <DialogsMesagges message={messages.message} />
+    <DialogsMesagges message={messages.message} key={messages.id} />
   ));
 
   let addMessageElements = React.createRef()
 
   let onAddMessage = () => {
-    props.addMessage()   
+    props.addMessage() 
+    
   } 
 
   let onMessageChange = () => {

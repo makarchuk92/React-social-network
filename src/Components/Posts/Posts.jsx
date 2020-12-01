@@ -6,7 +6,7 @@ import module from './Posts.module.css'
 
 const Posts = (props) => {
    let postsElements = 
-   props.state.postData.map ( (post) => <Post text={post.text} LikeUp={post.LikeUp} />)
+   props.state.postData.map ( (post) => <Post text={post.text} LikeUp={post.LikeUp} key={post.id} />)
 
    let addPostElements = React.createRef()
    
