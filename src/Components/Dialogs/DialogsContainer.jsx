@@ -31,8 +31,8 @@ import Dialogs from "./Dialogs";
 
 const mapStateToProps = (state) => {
   return {
-    state: state.dialogs,
-    newMessageText: state.dialogs.newMessageText
+    state: state.dialogsPage,
+    newMessageText: state.dialogsPage.newMessageText
   }
 }
 

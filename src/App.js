@@ -1,14 +1,14 @@
 import React from "react";
 import "./App.css";
+import {Route } from "react-router-dom";
 import Navigations from "./Components/Navigations/Navigations.jsx";
 import Header from "./Components/Header/Header.jsx";
 import ListJunior from "./Components/TextItemList/ListJunior/ListJunior.jsx";
 import ListMidle from "./Components/TextItemList/ListMidle/ListMidle.jsx";
 import ListSenior from "./Components/TextItemList/ListSenior/ListSenior.jsx";
-import News from "./Components/News/News"
-import {Route } from "react-router-dom";
 import PostsContainer from "./Components/Posts/PostsContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
+import UsersContainer from "./Components/Users/UsersContainer";
 
 
 const App = (props) => {
@@ -31,7 +31,7 @@ const App = (props) => {
             <Route path="/Senior" render={ () => <ListSenior />} />
           </div>
           <div>
-            <Route path="/News" render={ () => <News />} />
+            <Route path="/Users" render={ () => <UsersContainer />} />
           </div>
         </div>
       </div>

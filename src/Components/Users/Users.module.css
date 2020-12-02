@@ -1,21 +1,5 @@
 .NewsPost {
-   margin: 20px;
-}
-
-.AddNews {
-   text-align: center;
-}
-
-.NewsBlock {
-   width: 500px;
-   color: #000;
-   border: none;
-   font-weight: 700;
-   height: 100px;
-}
-
-.NewsBlock:focus {
-	outline: none;
+   margin: 5px 0 25px 0;
 }
 
 .NewsPost button {
@@ -36,4 +20,14 @@
 .NewsPost:hover button {
    background-color: rgba(146, 145, 145, 0.37);
    color: rgba(255, 255, 255, 0.616);
+ }
+
+ .Avatar {
+    width: 50px;
+    margin: 1rem 0 .1rem 0;
+    cursor: pointer;
+ }
+
+ .Offer {
+    text-align: center;
  }

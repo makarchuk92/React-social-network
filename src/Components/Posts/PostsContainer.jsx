@@ -5,6 +5,7 @@ import {
 } from "../../redux/postsReducer";
 import Posts from "./Posts";
 
+
 // const PostsContainer = () => {
 //   return ( <StoreContext.Consumer>
 //        { (store) => {
@@ -29,15 +30,15 @@ import Posts from "./Posts";
 // };
 
 
-const mapStateToProps = (state) => {
+let mapStateToProps = (state) => {
   return {
-    postData: state.posts.postData,
-    newPostText: state.posts.newPostText,
-    state: state.posts
+    postData: state.postsPage.postData,
+    newPostText: state.postsPage.newPostText,
+    state: state.postsPage
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch) => {
   return {
     updateNewPostText: (postText) => {
       dispatch(updateNewPostTextActionCreator(postText));

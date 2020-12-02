@@ -6,7 +6,7 @@ const NavigationsLi = () => {
    return (
        <ul className={module.Nav__menu}>
          <li>
-           <NavLink to='/News' className={module.Nav__item} activeClassName={module.activeLink}>News</NavLink>
+           <NavLink to='/Users' className={module.Nav__item} activeClassName={module.activeLink}>Users</NavLink>
          </li>
          <li>
            <NavLink to='/dialogs' className={module.Nav__item} activeClassName={module.activeLink}>Messages</NavLink>
