@@ -1,21 +1,21 @@
-import Axios from "axios";
 import React from "react";
 import module from "./Users.module.css";
 import * as axios from "axios"
 import userPhoto from "../../images/user.png"
 
-let Users = (props) => {
-   if (props.users.length ===0) {
-      axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-         props.setUsers(response.data.items)
-      })
-   }
 
-
-
+class Users extends React.Component {
+  componentDidMount() {
+    axios.get("https://social-network.samuraijs.com/api/1.0/users")
+    .then(response => {
+       this.props.setUsers(response.data.items)
+    })
+  }
+ 
+  render() {
   return (
     <div className={module.Offer}>
-      {props.users.map((u) => (
+      {this.props.users.map((u) => (
         <div key={u.id}>
           <div>
             <div>
@@ -30,19 +30,14 @@ let Users = (props) => {
           </div> */}
          <div className={module.NewsPost}>
             {u.followed 
-            ? <button onClick={ () => {props.unfollow(u.id)}}>unfollow</button> 
-            : <button onClick={ () => {props.follow(u.id)}}>follow</button> }
+            ? <button onClick={ () => {this.props.unfollow(u.id)}} className={module.unfollow} activeClassName={module.activebutton} >unfollow</button> 
+            : <button onClick={ () => {this.props.follow(u.id)}} className={module.follow} activeClassName={module.activebutton} >follow</button> }
          </div>
         </div>
       ))}
     </div>
   );
-};
-// <div className={module.AddNews}>
-//    <textarea className={module.NewsBlock} ref={addNewsElements}></textarea>
-//    <div className={module.NewsPost}>
-//       <button onClick={addNews}  type="button">add news</button>
-//    </div>
-// </div>
+  }
+}
 
 export default Users;
