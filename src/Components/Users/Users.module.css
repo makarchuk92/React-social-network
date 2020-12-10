@@ -31,3 +31,27 @@
  .Offer {
     text-align: center;
  }
+
+ .bullet {
+   text-align: left;
+   margin: 0 0 7% 14%;
+   width: 100px;
+   overflow: auto;
+ }
+
+ .bullet span {
+   color: #fff;
+   cursor: pointer;
+   padding-right: 4px;
+ }
+
+
+ .bullet .bullet__active {
+   color: darkorange;
+   font-weight: 700;
+ }
+
+ .NewsPost .unfollow {
+   background-color: rgba(42, 29, 48, 0.815);
+   color: darkorange;
+ }

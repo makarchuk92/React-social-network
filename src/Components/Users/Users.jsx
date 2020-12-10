@@ -1,21 +1,27 @@
 import React from "react";
 import module from "./Users.module.css";
-import * as axios from "axios"
 import userPhoto from "../../images/user.png"
 
 
-class Users extends React.Component {
-  componentDidMount() {
-    axios.get("https://social-network.samuraijs.com/api/1.0/users")
-    .then(response => {
-       this.props.setUsers(response.data.items)
-    })
-  }
- 
-  render() {
+
+  let Users = (props) => {
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+
+    let pages = [];
+    for (let i=1; i<=pagesCount; i++) {
+      pages.push(i)
+    }
+
   return (
     <div className={module.Offer}>
-      {this.props.users.map((u) => (
+      <div className={module.bullet}>
+        {pages.map(p => {
+          return <span className={props.currentPage === p &&  module.bullet__active}
+          onClick={ () => {props.onPageChanget(p)} }>{p}</span>
+        })}
+
+      </div>
+      {props.users.map((u) => (
         <div key={u.id}>
           <div>
             <div>
@@ -30,14 +36,14 @@ class Users extends React.Component {
           </div> */}
          <div className={module.NewsPost}>
             {u.followed 
-            ? <button onClick={ () => {this.props.unfollow(u.id)}} className={module.unfollow} activeClassName={module.activebutton} >unfollow</button> 
-            : <button onClick={ () => {this.props.follow(u.id)}} className={module.follow} activeClassName={module.activebutton} >follow</button> }
+            ? <button onClick={ () => {props.unfollow(u.id)}} className={module.unfollow}>unfollow</button> 
+            : <button onClick={ () => {props.follow(u.id)}} className={module.follow}>follow</button> }
          </div>
         </div>
       ))}
     </div>
   );
   }
-}
+
 
 export default Users;

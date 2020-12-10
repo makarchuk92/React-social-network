@@ -6,7 +6,8 @@ import usersReducer from "./usersReducer"
 let reducers = combineReducers({
    postsPage: postsReducer,
    dialogsPage: dialogsReducer,
-   usersPage: usersReducer
+   usersPage: usersReducer,
+   
 })
 
 let store = createStore(reducers)
