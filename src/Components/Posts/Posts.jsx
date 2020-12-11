@@ -1,6 +1,7 @@
 import React from 'react';
 import Post from './Post/Post.jsx';
 import module from './Posts.module.css'
+import ProfileContainer from './Profile/ProfileContainer.jsx';
 
 
 
@@ -21,6 +22,9 @@ const Posts = (props) => {
 
    return (
       <div className={module.Item}> 
+      <div className={module.account}>
+       <ProfileContainer />
+      </div>
          {postsElements}
          <div className={module.offer}>
             <textarea onChange={onPostChange} ref={addPostElements} value={props.newPostText} />

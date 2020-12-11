@@ -33,8 +33,7 @@ class UsersContainer extends React.Component {
       {this.props.isFetching ? <Preloader /> : null }
       <Users totalUsersCount={this.props.totalUsersCount} pageSize={this.props.pageSize} 
       currentPage={this.props.currentPage} unfollow={this.props.unfollow} follow={this.props.follow} 
-      onPageChanget={this.onPageChanget} users={this.props.users}
-      />
+      onPageChanget={this.onPageChanget} users={this.props.users} />
       </>
    }
 }
@@ -49,28 +48,6 @@ let mapStateToProps = (state) => {
    }
 } 
 
-// let mapDispatchToProps = (dispatch) => {
-//    return {
-//       follow: (userId) => {
-//          dispatch(followActionCreator(userId))
-//       },
-//       unfollow: (userId) => {
-//          dispatch(unfollowActionCreator(userId))
-//       },
-//       setUsers: (users) => {
-//          dispatch(setUserActionCreator(users))
-//       },
-//       setCurrentPage: (pageNumber) => {
-//          dispatch(setCurrentPageActionCreator(pageNumber))
-//       },
-//       setTotalUsersCount: (totalCount) => {
-//          dispatch(setUsersTotalCountActionCreator(totalCount))
-//       },
-//       toggleIsFetching: (isFetching) => {
-//          dispatch(toggleIsFetchingActionCreator(isFetching))
-//       }
-//    }
-// } 
 
 export default connect
    (mapStateToProps, { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching } )

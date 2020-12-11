@@ -12,7 +12,7 @@ const NavigationsLi = () => {
            <NavLink to='/dialogs' className={module.Nav__item} activeClassName={module.activeLink}>Messages</NavLink>
          </li>
          <li>
-           <NavLink to='/posts' className={module.Nav__item} activeClassName={module.activeLink}>Summary</NavLink>
+           <NavLink to='/Profile' className={module.Nav__item} activeClassName={module.activeLink}>Profile</NavLink>
          </li>
        </ul>
    )

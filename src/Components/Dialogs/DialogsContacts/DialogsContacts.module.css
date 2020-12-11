@@ -15,7 +15,7 @@
 }
 
 .contactsItem:hover a{
-  color: #000;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .contactsItem .activeLink {

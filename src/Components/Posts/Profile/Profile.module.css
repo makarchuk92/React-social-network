@@ -1,0 +1,65 @@
+.accaunt {
+   text-align: left;
+   margin: 5rem;
+   display: flex;
+}
+
+.accaunt__item {
+   min-width: 150px;
+   max-width: 250px;
+   margin-right: 5rem;
+}
+
+.accaunt__item h1 {
+   font-size: 17px;
+   text-align: center;
+}
+
+.accaunt__item img {
+   width: 100px;
+   border-radius: 50%;
+   display: flex;
+   margin: 10px auto;
+}
+
+.contacts {
+   margin: 0 auto;
+   border: 1px solid rgba(255, 255, 255, 0.2);
+   box-shadow: 10px 10px 20px rgba(0,0,0,0.3);
+   width: 40rem;
+   padding: 1rem 5rem;
+   display: flex;
+}
+
+.contacts_info {
+   width: 50%;
+}
+
+.contacts h2 {
+   font-size: 13px;
+}
+
+.list_contacts a {
+   font-weight: 300;
+   cursor: pointer;
+   display: block;
+   color: #fff;
+}
+
+.list_contacts a:hover {
+   color: darkorange;
+}
+
+.info_text {
+   width: 50%;
+}
+
+.info_text h2 {
+   text-align: center;
+}
+
+.info_text p {
+   word-wrap: break-word;
+   text-align: center;
+   font-weight: 300;
+}

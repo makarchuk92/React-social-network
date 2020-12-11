@@ -1,6 +1,7 @@
 import React from "react";
 import module from "./Users.module.css";
 import userPhoto from "../../images/user.png"
+import { NavLink } from "react-router-dom";
 
 
 
@@ -15,7 +16,7 @@ import userPhoto from "../../images/user.png"
   return (
     <div className={module.Offer}>
       <div className={module.bullet}>
-        {pages.map(p => {
+        {pages.map((p) => {
           return <span className={props.currentPage === p &&  module.bullet__active}
           onClick={ () => {props.onPageChanget(p)} }>{p}</span>
         })}
@@ -28,7 +29,10 @@ import userPhoto from "../../images/user.png"
                {u.name}
             </div>
             <div>
-              <img src={u.photos.small != null ? u.photos.small : userPhoto } className={module.Avatar}/>
+              <NavLink to={ "/Profile/" + u.id }>
+                <img src={u.photos.small != null ? u.photos.small : userPhoto } className={module.Avatar}  alt='foto'/>
+              </NavLink>
+              
             </div>
           </div>
           {/* <div>

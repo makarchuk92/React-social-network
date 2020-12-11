@@ -18,12 +18,8 @@ const App = (props) => {
           <Navigations />
           <Header />
           <div>
-            <Route path="/dialogs" render={ () =>  <DialogsContainer 
-              
-              /> }/>
-            <Route path="/posts" render={() => <PostsContainer
-              
-               /> }/>
+            <Route path="/dialogs" render={ () => <DialogsContainer /> }/>
+            <Route path="/Profile" render={ () => <PostsContainer /> }/>
           </div>
           <div>
             <Route path="/Junior" render={ () => <ListJunior />} />
