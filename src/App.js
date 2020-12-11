@@ -19,7 +19,7 @@ const App = (props) => {
           <Header />
           <div>
             <Route path="/dialogs" render={ () => <DialogsContainer /> }/>
-            <Route path="/Profile" render={ () => <PostsContainer /> }/>
+            <Route path="/Profile/:userId?" render={ () => <PostsContainer /> }/>
           </div>
           <div>
             <Route path="/Junior" render={ () => <ListJunior />} />
