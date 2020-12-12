@@ -5,5 +5,22 @@
   padding: 1rem;
 }
  
+.block_nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
- 
+.login {
+  margin-right: 10%;
+
+}
+
+.login a {
+  color: rgba(255, 255, 255, 0.74);
+  transition: all 0.5s ease;
+}
+
+.login a:hover {
+  color: darkorange;
+}
