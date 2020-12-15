@@ -5,26 +5,25 @@ import { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleI
 import Users from "./Users";
 import * as axios from "axios";
 import Preloader from '../../images/preloader/Preloader'
+import { userAPI } from "../../api/api";
 
 
 class UsersContainer extends React.Component {
    componentDidMount() {
       this.props.toggleIsFetching(true)
-     axios.get(`https://social-network.samuraijs.com/api/1.0/users?=${this.props.currentPage}&count=${this.props.pageSize}`)
-     .then(response => {
+      userAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
         this.props.toggleIsFetching(false)
-        this.props.setUsers(response.data.items)
-        this.props.setTotalUsersCount(response.data.totalCount)
+        this.props.setUsers(data.items)
+        this.props.setTotalUsersCount(data.totalCount)
      })
    }
   
    onPageChanget = (pageNumber) => {
       this.props.toggleIsFetching(true)
      this.props.setCurrentPage(pageNumber)
-     axios.get(`https://social-network.samuraijs.com/api/1.0/users?=${pageNumber}&count=${this.props.pageSize}`)
-     .then(response => {
+     userAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
       this.props.toggleIsFetching(false)
-        this.props.setUsers(response.data.items)
+        this.props.setUsers(data.items)
      })
    }
  
@@ -50,5 +49,7 @@ let mapStateToProps = (state) => {
 
 
 export default connect
-   (mapStateToProps, { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching } )
+   (mapStateToProps, 
+   { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, 
+   toggleIsFetching } )
    (UsersContainer)

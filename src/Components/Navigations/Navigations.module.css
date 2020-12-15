@@ -12,8 +12,9 @@
 }
 
 .login {
-  margin-right: 10%;
-
+  font-size: 12px;
+  font-weight: 300;
+  cursor: pointer;
 }
 
 .login a {
