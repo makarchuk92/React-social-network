@@ -9,6 +9,7 @@ import PostsContainer from "./Components/Posts/PostsContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
 import NavigationsContainer from "./Components/Navigations/NavigationsContainer";
+import Login from "./Components/Login/Login";
 
 
 const App = (props) => {
@@ -28,6 +29,9 @@ const App = (props) => {
           </div>
           <div>
             <Route path="/Users" render={ () => <UsersContainer />} />
+          </div>
+          <div>
+            <Route path="/Login" render={ () => <Login />} />
           </div>
         </div>
       </div>

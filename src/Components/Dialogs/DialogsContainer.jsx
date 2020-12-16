@@ -32,7 +32,9 @@ import Dialogs from "./Dialogs";
 const mapStateToProps = (state) => {
   return {
     state: state.dialogsPage,
-    newMessageText: state.dialogsPage.newMessageText
+    newMessageText: state.dialogsPage.newMessageText,
+
+    isAuth: state.auth.isAuth
   }
 }
 
