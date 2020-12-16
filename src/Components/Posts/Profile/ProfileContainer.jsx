@@ -1,9 +1,8 @@
 import React from 'react'
 import Profile from './Profile'
 import { connect } from 'react-redux'
-import { setUserProfile } from '../../../redux/postsReducer'
+import { getUserProfile } from '../../../redux/postsReducer'
 import { withRouter } from 'react-router-dom'
-import { getProfile } from '../../../api/api'
 
 
 
@@ -13,11 +12,7 @@ class ProfileContainer extends React.Component {
    componentDidMount() {
       let userId = this.props.match.params.userId
       if (!userId) {userId=2};
-      getProfile(userId)
-      // axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-      .then(data => {
-         this.props.setUserProfile(data)
-      })
+      this.props.getUserProfile(userId)
    }
    render() {
    return (
@@ -33,5 +28,5 @@ let mapStateToProps = (state) => ({
 
 let WitchUrlContainer = withRouter(ProfileContainer)
 
-export default connect (mapStateToProps, {setUserProfile} ) (WitchUrlContainer)
+export default connect (mapStateToProps, {getUserProfile} ) (WitchUrlContainer)
 
