@@ -2,8 +2,7 @@ import React from "react";
 import module from "./Users.module.css";
 import userPhoto from "../../images/user.png"
 import { NavLink } from "react-router-dom";
-import * as axios from "axios";
-import { userAPI } from "../../api/api";
+
 
 
 
@@ -20,9 +19,9 @@ import { userAPI } from "../../api/api";
       <div className={module.bullet}>
         {pages.map((p) => {
           return <span className={props.currentPage === p &&  module.bullet__active}
-          onClick={ () => {props.onPageChanget(p)} }>{p}</span>
-        })}
-
+          onClick={ () =>  {props.onPageChanget(p)} }>{p}</span> 
+        }) }
+        
       </div>
       {props.users.map((u) => (
         <div key={u.id}>

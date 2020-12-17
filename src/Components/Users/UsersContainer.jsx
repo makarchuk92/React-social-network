@@ -4,29 +4,18 @@ import { follow, unfollow, setCurrentPage, toggleFolowingProgress, getUsers
  } from "../../redux/usersReducer";
 import Users from "./Users";
 import Preloader from '../../images/preloader/Preloader'
-import { userAPI } from "../../api/api";
+
 
 
 
 class UsersContainer extends React.Component {
    componentDidMount() {
          this.props.getUsers(this.props.currentPage, this.props.pageSize)
-   //    this.props.toggleIsFetching(true)
-   //    userAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-   //      this.props.toggleIsFetching(false)
-   //      this.props.setUsers(data.items)
-   //      this.props.setTotalUsersCount(data.totalCount)
-   //   })
    }
   
    onPageChanget = (pageNumber) => {
       this.props.getUsers(pageNumber, this.props.pageSize)
-   //    this.props.toggleIsFetching(true)
       this.props.setCurrentPage(pageNumber)
-   //   userAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-   //    this.props.toggleIsFetching(false)
-   //      this.props.setUsers(data.items)
-   //   })
    }
  
    render() {

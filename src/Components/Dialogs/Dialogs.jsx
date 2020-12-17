@@ -2,7 +2,7 @@ import React from "react";
 import DialogsContacts from "./DialogsContacts/DialogsContacts";
 import DialogsMesagges from "./DialogsMesagges/DialogsMesagges";
 import module from "./Dialogs.module.css";
-import { Redirect } from "react-router-dom";
+
 
 
 
