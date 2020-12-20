@@ -13,7 +13,7 @@ const Profile = (props) => {
 
    return (
       <div>
-         <ProfileStatus status="Hi, my friend" />
+         <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
          <div className={module.accaunt}>
             <div className={module.accaunt__item} >
                <h1>{props.profile.fullName}</h1>
