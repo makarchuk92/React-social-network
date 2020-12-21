@@ -1,0 +1,49 @@
+.dialogs {
+  padding: 5rem 0;
+  display: flex;  
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.messages {
+  /* background-color: rgba(255, 255, 255, 0.822); */
+  width: 100%;
+  padding: 2rem 3rem 0 3rem;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.219);
+}
+
+.messageText {
+  width: 500px;
+  height: 80px;
+  padding: 5px 10px;
+  background: none;
+  color: #fff;
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.219);
+}
+
+.messageBlock {
+  display: flex;
+  position: absolute;
+  bottom: 0.5rem; 
+}
+
+.messageBlock button {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  font-weight: 900;
+  text-transform: uppercase;
+  background-color: rgba(146, 145, 145, 0.37);
+  margin-left: 5px;
+  transition: all 0.5s ease;
+}
+
+.messageBlock button:hover {
+  background-color: rgba(58, 21, 146, 0.473);
+  color: #fff;
+}

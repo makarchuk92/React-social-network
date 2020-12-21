@@ -1,0 +1,22 @@
+
+.Login_offer button {
+   display: block;
+   margin: 10px auto;
+}
+
+.login_input {
+   display: block;
+   margin: 5px auto;
+}
+
+.checkbox {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.checkbox .login_input {
+   margin: 0px 0.2rem 0px 0px;
+   
+}
+
