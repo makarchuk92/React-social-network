@@ -1,0 +1,16 @@
+
+.formError input,
+.formError textarea {
+   border: 1px solid red;
+
+}
+
+
+.formText {
+   color: rgb(233, 37, 37);
+   font-weight: 300;
+   display: block;
+   text-align: center;
+}
+
+

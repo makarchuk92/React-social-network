@@ -1,12 +1,11 @@
 
 .offer {
    margin: 35px 0;
-   position: relative;
 }
 
-.offer textarea {
-   width: 300px;
-   height: 50px;
+.offer_textarea {
+   width: 400px;
+   height: 70px;
    padding: 5px 10px;
 }
 
@@ -19,10 +18,9 @@
    text-transform: uppercase;
    background: none;
    border: 1px solid rgba(146, 145, 145, 0.37);
-   margin-left: 5px;
    cursor: pointer;
    transition: all 0.5s ease;
-   position: absolute;
+   margin-top: 1rem;
  }
  
  .btn:hover {
@@ -30,4 +28,5 @@
    color: #fff;
  }
 
+ 
 
