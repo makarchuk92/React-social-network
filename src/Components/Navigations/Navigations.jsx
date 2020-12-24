@@ -12,7 +12,8 @@ const Navigations = (props) => {
           <NavigationsLi />
         </div>
         <div className={module.login} >
-          {props.isAuth ? props.login 
+          {props.isAuth ? <div>{props.login} 
+          <NavLink onClick={props.logout} to='/login' className={module.logout} >log out</NavLink></div> 
            : <NavLink to='/login'>login in</NavLink> }
         </div>
      </div>

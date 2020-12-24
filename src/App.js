@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import {Route } from "react-router-dom";
+import {Route, withRouter } from "react-router-dom";
 import Header from "./Components/Header/Header.jsx";
 import ListJunior from "./Components/TextItemList/ListJunior/ListJunior.jsx";
 import ListMidle from "./Components/TextItemList/ListMidle/ListMidle.jsx";
@@ -10,9 +10,19 @@ import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
 import NavigationsContainer from "./Components/Navigations/NavigationsContainer";
 import Login from "./Components/Login/Login";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { initializeApp } from "./redux/app-reducer";
+import Preloader from "./Components/common/preloader/Preloader";
 
 
-const App = (props) => {
+class App extends React.Component {
+  componentDidMount() {
+    this.props.initializeApp()
+  }
+  render() {
+    if(!this.props.inicialized) {
+    return <Preloader /> }
   return (
       <div className="app-wrapper">
         <div className="wrapper-container">
@@ -35,7 +45,15 @@ const App = (props) => {
           </div>
         </div>
       </div>
-  );
+  )};
 };
 
-export default App;
+
+const mapStateToProps = (state) => ({
+  inicialized: state.app.inicialized
+})
+
+export default compose(
+  withRouter,
+  connect(mapStateToProps, {initializeApp})) (App)
+ 
