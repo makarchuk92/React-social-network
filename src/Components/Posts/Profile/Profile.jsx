@@ -2,7 +2,7 @@ import React from 'react'
 import Preloader from '../../common/preloader/Preloader'
 import module from './Profile.module.css'
 import userPhoto from '../../../images/user.png'
-import ProfileStatus from './ProfileStatus/ProfileStatus'
+import ProfileStatusHooks from './ProfileStatus/ProfileStatusHooks'
 
 
 
@@ -14,7 +14,7 @@ const Profile = (props) => {
 
    return (
       <div>
-         <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+         <ProfileStatusHooks status={props.status} updateStatus={props.updateStatus}/>
          <div className={module.accaunt}>
             <div className={module.accaunt__item} >
                <h1>{props.profile.fullName}</h1>
