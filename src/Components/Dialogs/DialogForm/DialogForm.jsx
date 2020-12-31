@@ -6,12 +6,12 @@ import { maxLengthCreator, required } from "../../../utils/validators";
 
 
 
-const maxLength15 = maxLengthCreator(15)
+const maxLength50 = maxLengthCreator(50)
 
 const DialogForm = (props) => {
   return (
         <form onSubmit={props.handleSubmit} className={module.messageBlock}>
-          <Field component={Textarea} validate={[required, maxLength15]}
+          <Field component={Textarea} validate={[required, maxLength50]}
            name={"newMessageText"} placeholder={"Enter your message"} className={module.messageText} />
           <button >send</button>
         </form>
