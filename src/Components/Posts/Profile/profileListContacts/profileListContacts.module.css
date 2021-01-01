@@ -1,0 +1,19 @@
+
+.contacts_info {
+   width: 50%;
+}
+
+.contacts_info h2 {
+   font-size: 13px;
+}
+
+.list_contacts a {
+   font-weight: 300;
+   cursor: pointer;
+   display: block;
+   color: #fff;
+}
+
+.list_contacts a:hover {
+   color: darkorange;
+}
