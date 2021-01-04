@@ -1,0 +1,33 @@
+import React, { useState } from "react"
+import module from "./Paginator.module.css"
+
+
+const Paginator = ({portionSize = 10, ...props}) => {
+   let pagesCount = Math.ceil(props.totalItemsCount / props.pageSize)
+
+   let pages = [];
+   for (let i=1; i<=pagesCount; i++) {
+     pages.push(i)
+   }
+
+   let portionCount = Math.ceil(pagesCount / portionSize);
+   let [portionNumber, setPortionNumber] = useState(1)
+   let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1
+   let RightPortionPageNumber = portionNumber * portionSize
+   return (
+      <div className={module.bullet}>
+         {portionNumber > 1 &&
+         <button onClick={() => {setPortionNumber(portionNumber -1) }}>Prev </button>}
+         {pages
+         .filter(P => P >= leftPortionPageNumber && P<= RightPortionPageNumber )
+         .map((p) => {
+         return <span className={props.currentPage === p &&  module.bullet__active}
+         onClick={ () =>  {props.onPageChanget(p)} }>{p}</span> 
+         }) }
+            {portionCount > portionNumber &&
+         <button onClick={() => {setPortionNumber(portionNumber +1) }}>Next </button>}
+      </div>
+   )
+}
+
+export default Paginator

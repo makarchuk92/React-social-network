@@ -1,0 +1,53 @@
+.NewsPost {
+   margin: 5px 0 25px 0;
+}
+
+.NewsPost button {
+   margin-bottom: 0.8rem;
+   box-shadow: -0px 15px 20px rgba(0,0,0,0.15);
+   border: none;
+   cursor: pointer;
+   width: 100px;
+   height: 30px;
+   border-radius: 15px;
+   font-weight: 700;
+   background-color: rgba(0, 0, 0, 0.37);
+   color: #fff;
+   transition: all 0.5s ease;
+}
+
+ 
+.NewsPost:hover button {
+   background-color: rgba(146, 145, 145, 0.37);
+   color: rgba(255, 255, 255, 0.616);
+ }
+
+ .Avatar {
+    width: 50px;
+    margin: 1rem 0 .1rem 0;
+    cursor: pointer;
+ }
+
+ .bullet {
+   text-align: left;
+   margin: 0 0 7% 14%;
+   width: 100px;
+   overflow: auto;
+ }
+
+ .bullet span {
+   color: #fff;
+   cursor: pointer;
+   padding-right: 4px;
+ }
+
+
+ .bullet .bullet__active {
+   color: darkorange;
+   font-weight: 700;
+ }
+
+ .NewsPost .unfollow {
+   background-color: rgba(42, 29, 48, 0.815);
+   color: darkorange;
+ }

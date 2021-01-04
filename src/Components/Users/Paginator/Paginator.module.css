@@ -1,0 +1,37 @@
+.bullet {
+   margin: 0 0 7% 13%;
+   text-align-last: left;
+ }
+
+ .bullet button {
+    background: none;
+    border: 1px solid rgba(146, 145, 145, 0.3);
+    margin: 1%;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.61);
+    font-weight: 400;
+    border-radius: 15px;
+    box-shadow: 0px 15px 20px rgba(0,0,0,0.15);
+    transition: 0.5s ease;
+ }
+
+ .bullet button:hover {
+    color: #fff;
+ }
+
+ .bullet button:active {
+   color: darkorange;
+ }
+
+.bullet span {
+   color: #fff;
+   cursor: pointer;
+   padding-right: 4px;
+   text-shadow: 1px 2px 10px rgba(255, 255, 255, 0.295);
+ }
+
+
+ .bullet .bullet__active {
+   color: darkorange;
+   font-weight: 700;
+ }
