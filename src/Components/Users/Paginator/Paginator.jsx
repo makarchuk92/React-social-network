@@ -19,13 +19,14 @@ const Paginator = ({portionSize = 10, ...props}) => {
          {portionNumber > 1 &&
          <button onClick={() => {setPortionNumber(portionNumber -1) }}>Prev </button>}
          {pages
-         .filter(P => P >= leftPortionPageNumber && P<= RightPortionPageNumber )
-         .map((p) => {
-         return <span className={props.currentPage === p &&  module.bullet__active}
-         onClick={ () =>  {props.onPageChanget(p)} }>{p}</span> 
-         }) }
+         .filter(p => p >= leftPortionPageNumber && p<= RightPortionPageNumber )
+         .map((p) => { return  <span  className={props.currentPage === p &&  module.bullet__active} 
+            onClick={ () =>  {props.onPageChanget(p) } } >{p}</span> 
+            }) }
+        
+
             {portionCount > portionNumber &&
-         <button onClick={() => {setPortionNumber(portionNumber +1) }}>Next </button>}
+         <button  onClick={() => {setPortionNumber(portionNumber +1) }}>Next </button>}
       </div>
    )
 }

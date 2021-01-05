@@ -6,7 +6,7 @@ import User from "./User/User.jsx";
 let Users = (props) => {
   return (
     <div className={module.Offer}>
-      <Paginator
+      <Paginator key={props.id}
         currentPage={props.currentPage}
         pageSize={props.pageSize}
         onPageChanget={props.onPageChanget}
