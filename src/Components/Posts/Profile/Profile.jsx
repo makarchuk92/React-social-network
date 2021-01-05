@@ -4,6 +4,7 @@ import module from './Profile.module.css'
 import userPhoto from '../../../images/user.png'
 import ProfileStatusHooks from './ProfileStatus/ProfileStatusHooks'
 import ProfileListContacts from './profileListContacts/ProfileListContacts'
+import { savePhoto } from '../../../redux/postsReducer'
 
 
 
@@ -12,13 +13,20 @@ const Profile = (props) => {
       return <Preloader />
    }
 
+   const onMainPhotoSelected = (e) => {
+      if(e.target.files.length) {
+         props.savePhoto(e.target.files[0])
+      }
+   }
+
    return (
       <div>
          <ProfileStatusHooks status={props.status} updateStatus={props.updateStatus}/>
          <div className={module.accaunt}>
             <div className={module.accaunt__item} >
                <h1>{props.profile.fullName}</h1>
-               <img src={props.profile.photos.large != null ? props.profile.photos.large : userPhoto } alt='foto' />
+               <img src={props.profile.photos.large || userPhoto } alt='foto' />
+               {props.isOwner && <input type="file" onChange={onMainPhotoSelected} />}
             </div>
             <div className={module.status} >
             
