@@ -43,6 +43,8 @@
 }
 
 .text_job p{
+   margin-left: 0.4rem;
+   font-size: 17px;
    align-items: center;
    display: flex;
 }

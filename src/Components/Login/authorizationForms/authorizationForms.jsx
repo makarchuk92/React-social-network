@@ -8,7 +8,7 @@ const maxLength30 = maxLengthCreator(30)
 const maxLength15 = maxLengthCreator(15)
 
 
-const authorizationForms = (props) => {
+const AuthorizationForms = (props) => {
    return ( 
          <form onSubmit={props.handleSubmit} className={module.Login_offer} >
             <div className={module.login_input}>
@@ -17,6 +17,8 @@ const authorizationForms = (props) => {
             <div className={module.login_input}>
                {createField("Password", "password", [required], Input, {type: "password"}, maxLength15)}
             </div>
+            {props.captchaUrl && <img src={props.captchaUrl} />}
+            {props.captchaUrl && createField("Symbols from image", "captcha", [required], Input, maxLength15)}
             
             {/* <Field component={Input} validate={[required, maxLength15]}
              type={"password"} placeholder={"Password"} name={"password"} required className={module.login_input} /> */}
@@ -34,4 +36,4 @@ const authorizationForms = (props) => {
    )
 }
 
-export default authorizationForms
+export default AuthorizationForms
