@@ -7,7 +7,7 @@
 .accaunt__item {
    min-width: 150px;
    max-width: 250px;
-   margin: 0 auto;
+
 }
 
 .accaunt__item h1 {
@@ -33,7 +33,18 @@
 
 
 .info_text {
-   width: 50%;
+   margin-left: auto;
+}
+
+.text_job {
+   margin-left: 20px;
+   display: flex;
+   justify-content: center;
+}
+
+.text_job p{
+   align-items: center;
+   display: flex;
 }
 
 .info_text h2 {
@@ -46,4 +57,11 @@
    text-align: center;
    font-weight: 300;
 }
+
+.Edit_about_me {
+   text-align: center;
+   margin-left: 25%;
+}
+
+
 

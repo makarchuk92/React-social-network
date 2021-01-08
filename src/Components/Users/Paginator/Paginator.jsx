@@ -20,7 +20,7 @@ const Paginator = ({portionSize = 10, ...props}) => {
          <button onClick={() => {setPortionNumber(portionNumber -1) }}>Prev </button>}
          {pages
          .filter(p => p >= leftPortionPageNumber && p<= RightPortionPageNumber )
-         .map((p) => { return  <span  className={props.currentPage === p &&  module.bullet__active} 
+         .map((p) => { return  <span key={p} className={props.currentPage === p &&  module.bullet__active} 
             onClick={ () =>  {props.onPageChanget(p) } } >{p}</span> 
             }) }
         

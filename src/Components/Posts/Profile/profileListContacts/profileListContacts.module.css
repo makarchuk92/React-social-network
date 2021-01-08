@@ -7,13 +7,17 @@
    font-size: 13px;
 }
 
-.list_contacts a {
+.list_contacts {
+   margin-top: 0.8rem;
+}
+
+.list_contacts p {
    font-weight: 300;
    cursor: pointer;
    display: block;
    color: #fff;
 }
 
-.list_contacts a:hover {
+.list_contacts p:hover {
    color: darkorange;
 }

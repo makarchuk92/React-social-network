@@ -1,4 +1,5 @@
 import React from 'react'
+import { Field } from 'redux-form'
 import module from './FormsControls.module.css'
 
 const FormControl = ({input, meta, chield, ...props}) => {
@@ -22,3 +23,10 @@ export const Input = (props) => {
    const {input, meta, chield, ...restProps} = props;
    return <FormControl {...props}><input {...input} {...restProps} /></FormControl>
 }
+
+export const createField = (placeholder, name, validators, component, props = {}, text = "") => (
+   <div>
+      <Field placeholder={placeholder} name={name}
+      validators={validators} component={component} {...props} /> {text}
+   </div>
+)
