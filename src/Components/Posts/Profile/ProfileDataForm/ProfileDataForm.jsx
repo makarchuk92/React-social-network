@@ -1,5 +1,5 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import {
   createField,
   Input,
@@ -15,25 +15,14 @@ const ProfileDataForm = (props) => {
       <div className={module.accaunt}>
         <div className={module.accaunt__item}>
           <h1>{props.profile.fullName}</h1> {createField("FullName", "fullName", {}, Input)}
-          <img
-            className={module.photo_ava}
-            src={props.profile.photos.large || userPhoto}
-            alt="foto"
-          />
+          <img className={module.photo_ava} src={props.profile.photos.large || userPhoto} alt="foto" />
           {props.isOwner && (
-            <input
-              type="file"
-              onChange={props.onMainPhotoSelected}
-              className={module.inpit_loading}
-            />
-          )}
+            <input type="file" onChange={props.onMainPhotoSelected} className={module.inpit_loading} /> )}
         </div>
         <div className={module.contacts}>
-
           <div>
             <button onClick={() => {}}>Save</button>
           </div>
-
           <div>
             <div>
               { props.error && <div className={m.error_Text}>

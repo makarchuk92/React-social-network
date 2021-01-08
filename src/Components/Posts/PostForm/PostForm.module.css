@@ -1,9 +1,9 @@
 
 .offer {
-   margin: 35px 0;
+   margin: 6rem 0 3rem 0;
 }
-
-.offer_textarea {
+ .offer_textarea textarea {
+   margin: 0 auto;
    width: 400px;
    height: 70px;
    padding: 5px 10px;
