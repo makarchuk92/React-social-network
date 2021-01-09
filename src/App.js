@@ -1,20 +1,22 @@
 import React from "react";
 import "./App.css";
 import {Redirect, Route, Switch, withRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { initializeApp } from "./redux/app-reducer";
+import { hookSuspense } from "./hoc/hookSuspense";
+import store from "./redux/redux-store"
 import Header from "./Components/Header/Header.jsx";
 import PostsContainer from "./Components/Posts/PostsContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
 import NavigationsContainer from "./Components/Navigations/NavigationsContainer";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import { initializeApp } from "./redux/app-reducer";
+import Error404 from "./Components/Error404/Error404";
 import Preloader from "./Components/common/preloader/Preloader";
-import { hookSuspense } from "./hoc/hookSuspense";
-import store from "./redux/redux-store"
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import Errors404 from "./Components/Errors404/Errors404";
+
+
 
 const ListJunior = React.lazy(() => import('./Components/TextItemList/ListJunior/ListJunior'))
 const ListMidle = React.lazy(() => import('./Components/TextItemList/ListMidle/ListMidle'))
@@ -42,7 +44,7 @@ class App extends React.Component {
             <Route path="/Senior" render={hookSuspense(ListSenior)} />
             <Route path="/Users" render={ () => <UsersContainer />} />
             <Route path="/Login" render={hookSuspense(Login)} />
-            <Route path="*" render={() => <Errors404 /> } />
+            <Route path="*" render={() => <Error404 /> } />
           </Switch>
         </div>
       </div>
