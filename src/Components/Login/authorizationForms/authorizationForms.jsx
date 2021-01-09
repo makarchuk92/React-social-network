@@ -4,7 +4,7 @@ import { maxLengthCreator, required } from '../../../utils/validators'
 import { createField, Input } from '../../common/FormsControls/FormsControls'
 import module from './authorizationForms.module.css'
 
-const maxLength30 = maxLengthCreator(30)
+
 const maxLength15 = maxLengthCreator(15)
 
 
@@ -17,11 +17,8 @@ const AuthorizationForms = (props) => {
             <div className={module.login_input}>
                {createField("Password", "password", [required], Input, {type: "password"}, maxLength15)}
             </div>
-            {props.captchaUrl && <img src={props.captchaUrl} />}
+            {props.captchaUrl && <img src={props.captchaUrl}  alt='captcha'/>}
             {props.captchaUrl && createField("Symbols from image", "captcha", [required], Input, maxLength15)}
-            
-            {/* <Field component={Input} validate={[required, maxLength15]}
-             type={"password"} placeholder={"Password"} name={"password"} required className={module.login_input} /> */}
          <div className={module.checkbox} >
             <Field component={"input"} 
              type={"Checkbox"} name={"rememberMe"} className={module.login_input }/> 

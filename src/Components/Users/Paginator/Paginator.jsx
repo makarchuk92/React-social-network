@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import module from "./Paginator.module.css"
+import classNames from 'classnames/bind';
 
 
 const Paginator = ({portionSize = 10, ...props}) => {
@@ -20,11 +21,11 @@ const Paginator = ({portionSize = 10, ...props}) => {
          <button onClick={() => {setPortionNumber(portionNumber -1) }}>Prev </button>}
          {pages
          .filter(p => p >= leftPortionPageNumber && p<= RightPortionPageNumber )
-         .map((p) => { return  <span key={p} className={props.currentPage === p &&  module.bullet__active} 
+         .map((p) => { return  <span key={p} className={classNames ({
+            [module.bullet__active] : props.currentPage === p
+         })}
             onClick={ () =>  {props.onPageChanget(p) } } >{p}</span> 
             }) }
-        
-
             {portionCount > portionNumber &&
          <button  onClick={() => {setPortionNumber(portionNumber +1) }}>Next </button>}
       </div>

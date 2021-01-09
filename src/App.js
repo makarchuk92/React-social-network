@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import {Route, withRouter } from "react-router-dom";
+import {Redirect, Route, Switch, withRouter } from "react-router-dom";
 import Header from "./Components/Header/Header.jsx";
 import PostsContainer from "./Components/Posts/PostsContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
@@ -11,6 +11,11 @@ import { connect } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
 import Preloader from "./Components/common/preloader/Preloader";
 import { hookSuspense } from "./hoc/hookSuspense";
+import store from "./redux/redux-store"
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import Errors404 from "./Components/Errors404/Errors404";
+
 const ListJunior = React.lazy(() => import('./Components/TextItemList/ListJunior/ListJunior'))
 const ListMidle = React.lazy(() => import('./Components/TextItemList/ListMidle/ListMidle'))
 const ListSenior = React.lazy(() => import('./Components/TextItemList/ListSenior/ListSenior'))
@@ -28,21 +33,17 @@ class App extends React.Component {
         <div className="wrapper-container">
           <NavigationsContainer />
           <Header />
-          <div>
+          <Switch>   
+            <Route exact path="/" render={ () => <Redirect to={"/Profile"} /> }/>
             <Route path="/dialogs" render={ () => <DialogsContainer /> }/>
             <Route path="/Profile/:userId?" render={ () => <PostsContainer /> }/>
-          </div>
-          <div>
             <Route path="/Junior" render={hookSuspense(ListJunior)} />
             <Route path="/Midle" render={hookSuspense(ListMidle)} />
             <Route path="/Senior" render={hookSuspense(ListSenior)} />
-          </div>
-          <div>
             <Route path="/Users" render={ () => <UsersContainer />} />
-          </div>
-          <div>
             <Route path="/Login" render={hookSuspense(Login)} />
-          </div>
+            <Route path="*" render={() => <Errors404 /> } />
+          </Switch>
         </div>
       </div>
   )};
@@ -53,7 +54,20 @@ const mapStateToProps = (state) => ({
   inicialized: state.app.inicialized
 })
 
-export default compose(
+const AppContainer = compose(
   withRouter,
   connect(mapStateToProps, {initializeApp})) (App)
+
+const MainApp = (props) => {
+  return (
+    <BrowserRouter>
+        <Provider store={store}>
+          <AppContainer />
+        </Provider>
+      </BrowserRouter> 
+  )
+} 
+
+export default MainApp
+
  
