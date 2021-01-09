@@ -1,7 +1,7 @@
 import React from 'react'
-import module from './Errors404.module.css'
+import module from './Error404.module.css'
 
-const Errors404 = () => {
+const Error404 = () => {
    return (
       <div className={module.Error} >
          <h1>404 Not Found</h1>
@@ -9,4 +9,4 @@ const Errors404 = () => {
    )
 }
 
-export default Errors404
+export default Error404
