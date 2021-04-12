@@ -1,12 +1,19 @@
 import React, { useState } from "react"
 import module from "./Paginator.module.css"
-import classNames from 'classnames/bind';
+import classNames from 'classnames'
 
+type propsType = {
+   portionSize?: number
+   totalItemsCount: number
+   pageSize: number
+   currentPage: number
+   onPageChanget: (pageNumber: number) => void
+}
 
-const Paginator = ({portionSize = 10, ...props}) => {
-   let pagesCount = Math.ceil(props.totalItemsCount / props.pageSize)
+let Paginator: React.FC<propsType> = ({portionSize = 10, totalItemsCount, pageSize, currentPage, onPageChanget}) => {
+   let pagesCount = Math.ceil(totalItemsCount / pageSize)
 
-   let pages = [];
+   let pages: Array<number> = []
    for (let i=1; i<=pagesCount; i++) {
      pages.push(i)
    }
@@ -22,9 +29,9 @@ const Paginator = ({portionSize = 10, ...props}) => {
          {pages
          .filter(p => p >= leftPortionPageNumber && p<= RightPortionPageNumber )
          .map((p) => { return  <span key={p} className={classNames ({
-            [module.bullet__active] : props.currentPage === p
+            [module.bullet__active] : currentPage === p
          })}
-            onClick={ () =>  {props.onPageChanget(p) } } >{p}</span> 
+            onClick={ () =>  {onPageChanget(p) } } >{p}</span> 
             }) }
             {portionCount > portionNumber &&
          <button  onClick={() => {setPortionNumber(portionNumber +1) }}>Next </button>}

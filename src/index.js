@@ -5,7 +5,12 @@ import * as serviceWorker from "./serviceWorker";
 import MainApp from "./App";
 
 
-ReactDOM.render(<MainApp />,  document.getElementById("root") );
+ReactDOM.render(
+   <React.StrictMode>
+      <MainApp />
+   </React.StrictMode>,
+    document.getElementById("root")
+ );
 
 
 // If you want your app to work offline and load faster, you can change

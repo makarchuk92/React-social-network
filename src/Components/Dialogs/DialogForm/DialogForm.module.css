@@ -27,8 +27,6 @@ h1 {
 
 .messageBlock {
   display: flex;
-  position: absolute;
-  bottom: 0.5rem; 
 }
 
 .messageBlock button {

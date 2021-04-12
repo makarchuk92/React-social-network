@@ -1,12 +1,15 @@
 import React from 'react'
 import module from './Login.module.css'
-import AuthorizationForms from './authorizationForms/AuthorizationForms.jsx'
+
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { login } from '../../redux/auth-reducer'
 import { Redirect } from 'react-router-dom'
+import AuthorizationForms from './authorizationForms/AuthorizationForms'
 
 const LoginReduxForm = reduxForm({form: 'login'}) (AuthorizationForms)
+
+
 
 const Login = (props) => {
    const onSubmit = (FormData) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Navigations from './Navigations.jsx';
-import { logout } from '../../redux/auth-reducer.js';
+import { logout } from '../../redux/auth-reducer';
 
 
 class NavigationsContainer extends React.Component {

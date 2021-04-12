@@ -46,7 +46,7 @@ const ProfileDataForm = (props) => {
             </div>
             <div className={module.text_job}>
               <h3>My skills:</h3>
-              <p>{props.profile.lookingForAJobDescription}</p>
+              {/* <p>{props.profile.lookingForAJobDescription}</p> */}
               {createField("My skills", "lookingForAJobDescription", {}, Textarea)}
             </div>
             <h2>About me:</h2>

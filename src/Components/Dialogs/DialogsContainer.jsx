@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
   return {
     state: state.dialogsPage,
     newMessageText: state.dialogsPage.newMessageText,
+    newMessageText: ""
   }
 }
 
