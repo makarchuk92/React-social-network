@@ -1,21 +1,21 @@
 import React from 'react'
-import { Field } from 'redux-form'
+import { Field, InjectedFormProps } from 'redux-form'
 import { maxLengthCreator, required } from '../../../utils/validators'
 import { createField, Input } from '../../common/FormsControls/FormsControls'
+import { LoginFormType, LoginOwnPropsType } from '../Login';
 import module from './authorizationForms.module.css'
 
 
 const maxLength15 = maxLengthCreator(15)
 
-
-const AuthorizationForms = (props) => {
+const AuthorizationForms: React.FC<InjectedFormProps<LoginFormType, LoginOwnPropsType> & LoginOwnPropsType> = (props) => {
    return ( 
          <form onSubmit={props.handleSubmit} className={module.Login_offer} >
             <div className={module.login_input}>
                {createField("Email", "email", [required], Input)}
             </div>
             <div className={module.login_input}>
-               {createField("Password", "password", [required], Input, {type: "password"}, maxLength15)}
+               {createField("Password", "password", [required], Input, {type: "password"}) }
             </div>
             {props.captchaUrl && <img src={props.captchaUrl}  alt='captcha'/>}
             {props.captchaUrl && createField("Symbols from image", "captcha", [required], Input, maxLength15)}
