@@ -6,6 +6,7 @@ import { login } from '../../redux/auth-reducer'
 import { Redirect } from 'react-router-dom'
 import AuthorizationForms from './authorizationForms/AuthorizationForms'
 import { AppStateType } from '../../redux/redux-store';
+import { LoginFormType } from './authorizationForms/AuthorizationForms';
 
 const LoginReduxForm = reduxForm<LoginFormType, LoginOwnPropsType>({form: 'login'}) (AuthorizationForms)
 
@@ -21,12 +22,7 @@ export type LoginPropsType = MapStatePropsType & MapDispatchPropsType
 export type LoginOwnPropsType = {
    captchaUrl: string | null
 }
-export type LoginFormType = {
-   email: string
-   password: string 
-   rememberMe: boolean
-   captcha: string
-}
+
 
 const Login: React.FC<LoginPropsType> = (props) => {
    const onSubmit = (FormData: LoginFormType) => {

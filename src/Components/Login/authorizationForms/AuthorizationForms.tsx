@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, InjectedFormProps } from 'redux-form'
 import { maxLengthCreator, required } from '../../../utils/validators'
 import { createField, Input } from '../../common/FormsControls/FormsControls'
-import { LoginFormType, LoginOwnPropsType } from '../Login';
+import {  LoginOwnPropsType } from '../Login';
 import module from './authorizationForms.module.css'
 
 
@@ -12,13 +12,13 @@ const AuthorizationForms: React.FC<InjectedFormProps<LoginFormType, LoginOwnProp
    return ( 
          <form onSubmit={props.handleSubmit} className={module.Login_offer} >
             <div className={module.login_input}>
-               {createField("Email", "email", [required], Input)}
+               {createField<LoginFormTypeKeys>("Email", "email", [required], Input)}
             </div>
             <div className={module.login_input}>
-               {createField("Password", "password", [required], Input, {type: "password"}) }
+               {createField<LoginFormTypeKeys>("Password", "password", [required], Input, {type: "password"}) }
             </div>
             {props.captchaUrl && <img src={props.captchaUrl}  alt='captcha'/>}
-            {props.captchaUrl && createField("Symbols from image", "captcha", [required], Input, maxLength15)}
+            {props.captchaUrl && createField<LoginFormTypeKeys>("Symbols from image", "captcha", [required], Input, maxLength15)}
          <div className={module.checkbox} >
             <Field component={"input"} 
              type={"Checkbox"} name={"rememberMe"} className={module.login_input }/> 
@@ -32,5 +32,13 @@ const AuthorizationForms: React.FC<InjectedFormProps<LoginFormType, LoginOwnProp
      
    )
 }
+
+export type LoginFormType = {
+   email: string
+   password: string 
+   rememberMe: boolean
+   captcha: string
+}
+type LoginFormTypeKeys = Extract<keyof LoginFormType, string> 
 
 export default AuthorizationForms

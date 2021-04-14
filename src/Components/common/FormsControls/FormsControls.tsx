@@ -5,6 +5,7 @@ import { FieldValidatorType } from '../../../utils/validators'
 
 
 
+
 const FormControl: React.FC<WrappedFieldProps> = ({input, meta, children, ...props}) => {
    const hasError = meta.touched && meta.error
    return ( 
@@ -28,13 +29,17 @@ export const Input: React.FC<WrappedFieldProps> = (props) => {
    return <FormControl {...props}><input {...input} {...restProps} /></FormControl>
 }
 
-export const createField = (placeholder: string | undefined, name: string, validators: Array<FieldValidatorType>,
-    component: React.FC<WrappedFieldProps>, props = {}, text = "") => (
-   <div>
+
+
+export function createField<FormKeysType extends string>(placeholder: string | undefined, 
+                           name: FormKeysType, 
+                           validators: Array<FieldValidatorType>,
+    component: React.FC<WrappedFieldProps>, props = {}, text = "") {
+   return <div>
       <Field placeholder={placeholder} name={name}
       validators={validators} component={component}
       {...props}
       />
       {text}
    </div>
-)
+    }
