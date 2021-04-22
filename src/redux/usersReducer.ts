@@ -1,9 +1,9 @@
 import { Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
-import { userAPI } from "../api/api";
 import { UserType } from "../Types/types";
 import { objectUsersReducer } from "../utils/object-usersReducer";
 import { AppStateType, InferActionsTypes } from './redux-store';
+import { userAPI } from '../api/user-api';
 
 
 let inicialState = {

@@ -1,8 +1,10 @@
 import { stopSubmit } from "redux-form";
-import { authAPI, ResultCodesEnum, ResultCodesForCaptchaEnum, securityApi } from "../api/api";
+import { ResultCodesEnum, ResultCodesForCaptchaEnum } from "../api/api";
 import { Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { AppStateType } from './redux-store';
+import { authAPI } from '../api/auth-api';
+import { securityApi } from '../api/security-api';
 
 const SET_USER_DATA = "auth/SET_USER_DATA"
 const GET_CAPTCHA_URL_SUCCESS = "auth/GET_CAPTCHA_URL_SUCCESS"
@@ -82,7 +84,7 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
       if (data.resultCode === ResultCodesEnum.Success) {
         dispatch(getAuthUserData())
       } else {
-        if (data.resultCode === ResultCodesForCaptchaEnum.CaptchaIsRequired) {
+        if (data.resultCode ===  ResultCodesForCaptchaEnum.CaptchaIsRequired) {
           dispatch(getCaptchaUrl())
         }
         let message = data.messages.length > 0 ? data.messages[0] : "Some Error"
