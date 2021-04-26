@@ -1,13 +1,8 @@
 import { stopSubmit } from "redux-form";
 import { ResultCodesEnum, ResultCodesForCaptchaEnum } from "../api/api";
-import { Dispatch } from 'redux';
-import { ThunkAction } from 'redux-thunk';
-import { AppStateType } from './redux-store';
 import { authAPI } from '../api/auth-api';
 import { securityApi } from '../api/security-api';
-
-const SET_USER_DATA = "auth/SET_USER_DATA"
-const GET_CAPTCHA_URL_SUCCESS = "auth/GET_CAPTCHA_URL_SUCCESS"
+import { BaseThunkType, InferActionsTypes } from "./redux-store";
 
 
 
@@ -19,13 +14,14 @@ let inicialState = {
   isFetching: false as boolean,
   captchaUrl: null as string | null,
 }
-
 export type inicialStateType = typeof inicialState
+type ActionsTypes = InferActionsTypes<typeof actions>
+type ThunkType = BaseThunkType<ActionsTypes | ReturnType<typeof stopSubmit>>
 
 const authReducer = (state = inicialState, action: ActionsTypes): inicialStateType => {
   switch (action.type) {
-    case SET_USER_DATA:
-    case GET_CAPTCHA_URL_SUCCESS: 
+    case 'auth/SET_USER_DATA':
+    case 'auth/GET_CAPTCHA_URL_SUCCESS': 
       return {
         ...state,
         ...action.payload
@@ -35,51 +31,30 @@ const authReducer = (state = inicialState, action: ActionsTypes): inicialStateTy
   }
 };
 
-type ActionsTypes =  setAuthUserDataActionType | getCaptchaUrlSuccessActionType
-
-type setAuthUserDataActionPayloadType = {
-  userId: number | null
-  email: string | null
-  login: string | null
-  isAuth: boolean
-}
-
-type setAuthUserDataActionType = {
-  type: typeof SET_USER_DATA,
-  payload: setAuthUserDataActionPayloadType 
-}
-export const setAuthUserData =
- (userId: number | null, email: string | null, login: string | null, isAuth: boolean): setAuthUserDataActionType => 
+const actions = {
+  setAuthUserData: (userId: number | null, email: string | null, login: string | null, isAuth: boolean) => 
 ({ 
-  type: SET_USER_DATA, payload: {userId, email, login, isAuth}
-})
-
-type getCaptchaUrlSuccessActionType = {
-  type: typeof GET_CAPTCHA_URL_SUCCESS
-  payload: {captchaUrl: string}
+  type: 'auth/SET_USER_DATA', payload: {userId, email, login, isAuth}
+} as const),
+  getCaptchaUrlSuccess: (captchaUrl: string) => ({ type: 'auth/GET_CAPTCHA_URL_SUCCESS',  payload: {captchaUrl}
+} as const)
 }
-export const getCaptchaUrlSuccess = (captchaUrl: string): getCaptchaUrlSuccessActionType => ({
-  type: GET_CAPTCHA_URL_SUCCESS,
-  payload: {captchaUrl}
-})
 
-
-type DispatchType = Dispatch<ActionsTypes>
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
 
 export const getAuthUserData = (): ThunkType => {
   return async (dispatch) => {
+    
      let data = await authAPI.getNavigations();
       if ( data.resultCode === ResultCodesEnum.Success) {
         let {id, email, login} = data.data
-        dispatch(setAuthUserData(id, email, login, true))
+        dispatch(actions.setAuthUserData(id, email, login, true))
       }
     
   }
 }
 
 export const login = (email: string, password: string, rememberMe: boolean, captcha: string): ThunkType => {
-  return async (dispatch:any) => {
+  return async (dispatch) => {
     let data = await authAPI.login(email, password, rememberMe, captcha)
       if (data.resultCode === ResultCodesEnum.Success) {
         dispatch(getAuthUserData())
@@ -94,18 +69,18 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
 }
 
 export const getCaptchaUrl = (): ThunkType => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     let data = await securityApi.getCaptchaUrl()
     let captchaUrl = data.url 
-    dispatch(getCaptchaUrlSuccess(captchaUrl))
+    dispatch(actions.getCaptchaUrlSuccess(captchaUrl))
       }
   }
 
-export const logout = ():ThunkType => {
-  return async (dispatch, getState) => {
+export const logout = (): ThunkType => {
+  return async (dispatch) => {
     let data = await authAPI.logout()
       if ( data.resultCode === 0) {
-        dispatch(setAuthUserData(null, null, null, false))
+        dispatch(actions.setAuthUserData(null, null, null, false))
       }
   }
 }

@@ -1,8 +1,7 @@
 import { Dispatch } from "redux";
-import { ThunkAction } from "redux-thunk";
 import { UserType } from "../Types/types";
 import { objectUsersReducer } from "../utils/object-usersReducer";
-import { AppStateType, InferActionsTypes } from './redux-store';
+import { BaseThunkType, InferActionsTypes } from './redux-store';
 import { userAPI } from '../api/user-api';
 
 
@@ -17,7 +16,7 @@ let inicialState = {
 
 type inicialStateType = typeof inicialState
 
-const usersReducer = (state = inicialState, action: ActionsTypes): inicialStateType => {
+const usersReducer = (state = inicialState, action: any): inicialStateType => {
   switch (action.type) {
     case "FOLLOW":
       return {
@@ -81,12 +80,9 @@ export const actions = {
     {type: "TOGGLE_IS_FOLLOWING_PROGRESS", isFetching, userId} as const)
 }
 
-
-
-
   
 type DispatchType = Dispatch<ActionsTypes>
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
+type ThunkType = BaseThunkType<ActionsTypes>
 
 export const requestUsers = (currentPage: number,
                              pageSize: number): ThunkType => {
