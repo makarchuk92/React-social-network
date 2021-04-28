@@ -12,7 +12,7 @@ const AuthorizationForms: React.FC<InjectedFormProps<LoginFormType, LoginOwnProp
    return ( 
          <form onSubmit={props.handleSubmit} className={module.Login_offer} >
             <div className={module.login_input}>
-               {createField<LoginFormTypeKeys>("Email", "email", [required], Input)}
+               {createField<LoginFormTypeKeys>("Email", "email", [required, maxLength15], Input)}
             </div>
             <div className={module.login_input}>
                {createField<LoginFormTypeKeys>("Password", "password", [required], Input, {type: "password"}) }

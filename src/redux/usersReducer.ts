@@ -16,7 +16,7 @@ let inicialState = {
 
 type inicialStateType = typeof inicialState
 
-const usersReducer = (state = inicialState, action: any): inicialStateType => {
+const usersReducer = (state = inicialState, action: ActionsTypes): inicialStateType => {
   switch (action.type) {
     case "FOLLOW":
       return {
