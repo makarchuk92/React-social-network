@@ -3,9 +3,17 @@ import module from "./User.module.css";
 import userPhoto from "../../../images/user.png";
 import { NavLink } from "react-router-dom";
 import SubscriptionButton from "./SubscriptionButton/SubscriptionButton";
+import { UserType } from '../../../Types/types';
 
 
-let User = ({user, followingInProgress, unfollow, follow,}) => {
+export type UserPropsType = {
+  user: UserType
+  followingInProgress: Array<number>
+  unfollow: (userId: number) => void
+  follow: (userId: number) => void
+}
+
+const User: React.FC<UserPropsType>= ({user, followingInProgress, unfollow, follow}) => {
   return (
     <div>
         <div>{user.name}</div>

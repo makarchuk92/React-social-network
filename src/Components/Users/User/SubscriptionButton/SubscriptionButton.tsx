@@ -1,9 +1,10 @@
 import React from "react";
 import module from "./SubscriptionButton.module.css";
+import { UserPropsType } from '../User';
 
 
 
-let SubscriptionButton = ({user, followingInProgress, unfollow, follow}) => {
+let SubscriptionButton: React.FC<UserPropsType>= ({user, followingInProgress, unfollow, follow}) => {
   return (
       <div className={module.NewsPost}>
         {user.followed ? (

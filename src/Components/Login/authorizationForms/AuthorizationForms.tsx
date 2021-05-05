@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, InjectedFormProps } from 'redux-form'
 import { maxLengthCreator, required } from '../../../utils/validators'
-import { createField, Input } from '../../common/FormsControls/FormsControls'
+import { createField, Input, GetStringKeys } from '../../common/FormsControls/FormsControls';
 import {  LoginOwnPropsType } from '../Login';
 import module from './authorizationForms.module.css'
 
@@ -39,6 +39,6 @@ export type LoginFormType = {
    rememberMe: boolean
    captcha: string
 }
-type LoginFormTypeKeys = Extract<keyof LoginFormType, string> 
+type LoginFormTypeKeys = GetStringKeys<LoginFormType>
 
 export default AuthorizationForms

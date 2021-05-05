@@ -24,7 +24,6 @@ export const Textarea: React.FC<WrappedFieldProps> = (props) => {
 }
 
 export const Input: React.FC<WrappedFieldProps> = (props) => {
-   //const {input, meta, chield, ...restProps} = props
    const {input, meta, ...restProps} = props
    return <FormControl {...props}><input {...input} {...restProps} /></FormControl>
 }
@@ -43,3 +42,6 @@ export function createField<FormKeysType extends string>(placeholder: string | u
       {text}
    </div>
     }
+
+
+export type GetStringKeys<T> = Extract<keyof T, string>     
