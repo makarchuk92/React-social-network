@@ -15,7 +15,8 @@ type PropsType = {
   follow: (userId: number) => void
 }
 
-let Users: React.FC<PropsType> = ({currentPage, pageSize, onPageChanget, totalUsersCount, users, ...props}) => {
+let Users: React.FC<PropsType> = ({currentPage, pageSize, onPageChanget, totalUsersCount,
+   users, follow, unfollow, followingInProgress}) => {
   return (
     <div className={module.Offer}>
     
@@ -29,9 +30,9 @@ let Users: React.FC<PropsType> = ({currentPage, pageSize, onPageChanget, totalUs
         <User
           key={u.id}
           user={u}
-          followingInProgress={props.followingInProgress}
-          unfollow={props.unfollow}
-          follow={props.follow}
+          followingInProgress={followingInProgress}
+          unfollow={unfollow}
+          follow={follow}
         />
       ))}
     </div>

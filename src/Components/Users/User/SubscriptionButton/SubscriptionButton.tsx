@@ -7,7 +7,7 @@ import { UserPropsType } from '../User';
 let SubscriptionButton: React.FC<UserPropsType>= ({user, followingInProgress, unfollow, follow}) => {
   return (
       <div className={module.NewsPost}>
-        {user.followed ? (
+        {user.followed ? 
           <button
             disabled={followingInProgress.some((id) => id === user.id)}
             onClick={() => {
@@ -17,7 +17,7 @@ let SubscriptionButton: React.FC<UserPropsType>= ({user, followingInProgress, un
           >
             unfollow
           </button>
-        ) : (
+         : 
           <button
             disabled={followingInProgress.some((id) => id === user.id)}
             onClick={() => {
@@ -27,7 +27,7 @@ let SubscriptionButton: React.FC<UserPropsType>= ({user, followingInProgress, un
           >
             follow
           </button>
-        )}
+        }
       </div>
   );
 };

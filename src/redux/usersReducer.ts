@@ -1,8 +1,9 @@
 import { Dispatch } from "redux";
 import { UserType } from "../Types/types";
-import { objectUsersReducer } from "../utils/object-usersReducer";
+import { updateObjectInArray } from "../utils/object-usersReducer";
 import { BaseThunkType, InferActionsTypes } from './redux-store';
 import { userAPI } from '../api/user-api';
+import { APIResponseType } from '../api/api';
 
 
 let inicialState = {
@@ -21,19 +22,19 @@ const usersReducer = (state = inicialState, action: ActionsTypes): inicialStateT
     case "FOLLOW":
       return {
         ...state,
-        users: objectUsersReducer(state.users, action.userId, "id", {followed: true} )
+        users: updateObjectInArray(state.users, action.userId, "id", {followed: true} )
       }
 
     case "UNFOLLOW":
       return {
         ...state,
-        users: objectUsersReducer(state.users, action.userId, "id", {followed: false} )
+        users: updateObjectInArray(state.users, action.userId, "id", {followed: false} )
       }
 
     case "SET_USERS":
       return {
         ...state,
-        users: action.users,
+        users: action.users
       };
 
     case "SET_CURRENT_PAGE":
@@ -59,7 +60,7 @@ const usersReducer = (state = inicialState, action: ActionsTypes): inicialStateT
           ...state,
           followingInProgress: action.isFetching
           ? [...state.followingInProgress, action.userId]
-          : state.followingInProgress.filter(id => id !== action.userId)
+          : state.followingInProgress.filter(id => id != action.userId)
         }
 
     default:
@@ -81,7 +82,6 @@ export const actions = {
 }
 
   
-type DispatchType = Dispatch<ActionsTypes>
 type ThunkType = BaseThunkType<ActionsTypes>
 
 export const requestUsers = (currentPage: number,
@@ -96,11 +96,11 @@ export const requestUsers = (currentPage: number,
   } 
 }
 
-const followUnfollowFlow = async (dispatch: DispatchType, userId: number, apiMethod: any,
+const followUnfollowFlow = async (dispatch: Dispatch<ActionsTypes>, userId: number, apiMethod: (useerId: number) => Promise<APIResponseType>,
  actionCreator: (userId: number) => ActionsTypes) => {
   dispatch(actions.toggleFolowingProgress(true, userId))
     let response = await apiMethod(userId)
-      if (response.data.resultCode === 0) {
+      if (response.resultCode === 0) {
         dispatch(actionCreator(userId))
       }
       dispatch(actions.toggleFolowingProgress(false, userId))

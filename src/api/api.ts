@@ -31,7 +31,11 @@ export type ResponseType<D = {}, RS = ResultCodesEnum > = {
    messages: Array<string>
 }
 
-
+export type APIResponseType<D = {}, RC = ResultCodesEnum> = {
+   data: D
+   messages: Array<string>
+   resultCode: RC
+}
 
 
 
