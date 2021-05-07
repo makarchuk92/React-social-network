@@ -96,7 +96,7 @@ export const requestUsers = (currentPage: number,
   } 
 }
 
-const followUnfollowFlow = async (dispatch: Dispatch<ActionsTypes>, userId: number, apiMethod: (useerId: number) => Promise<APIResponseType>,
+const followUnfollowFlow = async (dispatch: Dispatch<ActionsTypes>, userId: number, apiMethod: (userId: number) => Promise<APIResponseType>,
  actionCreator: (userId: number) => ActionsTypes) => {
   dispatch(actions.toggleFolowingProgress(true, userId))
     let response = await apiMethod(userId)

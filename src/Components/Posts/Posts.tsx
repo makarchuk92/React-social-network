@@ -1,11 +1,12 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
-import Post from './Post/Post.jsx';
+import Post from './Post/Post';
 import PostForm from './PostForm/PostForm';
 import module from './Posts.module.css'
-import ProfileContainer from './Profile/ProfileContainer.jsx';
 import { AddPostFormType } from './PostForm/PostForm';
 import { PostDataType } from '../../Types/types';
+import ProfileContainer from './Profile/ProfileContainer'
+
 
 
 type PropsType = {
