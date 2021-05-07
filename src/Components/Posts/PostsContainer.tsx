@@ -9,8 +9,7 @@ import { AppStateType } from '../../redux/redux-store';
 let mapStateToProps = (state: AppStateType) => {
   return {
     postData: state.postsPage.postData,
-    newPostText: state.postsPage.newPostText,
-    state: state.postsPage
+    //newPostText: state.postsPage.newPostText,
   }
 }
 
@@ -23,7 +22,8 @@ let mapStateToProps = (state: AppStateType) => {
 //   }
 // }
 
-const PostsContainer = connect<MapStatePostsPropsType, MapDispatchPostsPropsType, {}, AppStateType>(mapStateToProps, {
+const PostsContainer = connect<MapStatePostsPropsType, MapDispatchPostsPropsType, {}, AppStateType>(
+  mapStateToProps, {
   addPost: actions.addPostActionCreator
 } ) (Posts)
 

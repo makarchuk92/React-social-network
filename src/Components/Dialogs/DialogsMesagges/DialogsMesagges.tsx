@@ -1,7 +1,11 @@
 import React from "react";
 import module from "./DialogsMesagges.module.css";
 
-const DialogsMesagges = (props) => {
+type PropsType = {
+  message: string
+}
+
+const DialogsMesagges: React.FC<PropsType> = (props) => {
   return (
     <div className={module.messagesItem}>
       <img

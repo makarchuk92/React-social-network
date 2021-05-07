@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
 import { hookSuspense } from "./hoc/hookSuspense";
 import store, { AppStateType } from "./redux/redux-store"
-import Header from "./Components/Header/Header.jsx";
+import Header from "./Components/Header/Header";
 import PostsContainer from "./Components/Posts/PostsContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import UsersContainer from "./Components/Users/UsersContainer";

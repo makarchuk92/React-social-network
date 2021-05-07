@@ -1,6 +1,6 @@
 import React from 'react'
 import module from './Login.module.css'
-import { InjectedFormProps, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { login } from '../../redux/auth-reducer'
 import { Redirect } from 'react-router-dom'

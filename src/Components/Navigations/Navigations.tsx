@@ -1,10 +1,19 @@
 import React from 'react';
-import NavigationsLogo from './NavigationsLogo/NavigationsLogo.jsx'
-import NavigationsLi from './NavigationsLi/NavigationsLi.jsx'
+import NavigationsLogo from './NavigationsLogo/NavigationsLogo'
+import NavigationsLi from './NavigationsLi/NavigationsLi'
 import module from './Navigations.module.css';
 import { NavLink } from 'react-router-dom';
 
-const Navigations = (props) => {
+export type MapStatePropsType = {
+  isAuth: boolean
+  login: string | null
+}
+
+export type MapDispatchPropsType = {
+  logout: () => void 
+}
+
+const Navigations: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
    return (
      <div className={module.block_nav}>
        <NavigationsLogo /> 

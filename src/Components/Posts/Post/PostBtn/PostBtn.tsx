@@ -2,7 +2,8 @@ import React from 'react';
 import module from './PostBtn.module.css'
 
 
-const PostBtn = (props) => {
+
+const PostBtn = () => {
 
   let moreDetalis = () => {
     alert ('Hello, my friend')

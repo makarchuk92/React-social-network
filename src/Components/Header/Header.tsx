@@ -1,6 +1,6 @@
 import React from 'react';
-import HeaderMenu from './HeaderMenu/HeaderMenu.jsx';
-import HeaderPage from './HeaderPage/HeaderPage.jsx'
+import HeaderMenu from './HeaderMenu/HeaderMenu';
+import HeaderPage from './HeaderPage/HeaderPage'
 import module from './Header.module.css';
 
 const Header = () => {

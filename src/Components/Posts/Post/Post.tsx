@@ -1,11 +1,15 @@
 import React from "react";
-import PostLike from "./PostLike/PostLike.jsx";
-import PostAvatar from "./PostAvatar/PostAvatar.jsx";
-import PostBtn from "./PostBtn/PostBtn.jsx";
+import PostLike from "./PostLike/PostLike";
+import PostAvatar from "./PostAvatar/PostAvatar";
+import PostBtn from "./PostBtn/PostBtn";
 import module from "./Post.module.css";
 
 
-const Post = (props) => {
+type PropsType = {
+  text: string,
+  LikeUp: number
+}
+const Post: React.FC<PropsType> = (props) => {
   return (
     <div className={module.Offer}>
       {props.text}
