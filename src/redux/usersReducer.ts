@@ -15,7 +15,7 @@ let inicialState = {
   followingInProgress: [] as Array <number>
 };
 
-type inicialStateType = typeof inicialState
+export type inicialStateType = typeof inicialState
 
 const usersReducer = (state = inicialState, action: ActionsTypes): inicialStateType => {
   switch (action.type) {
@@ -108,13 +108,13 @@ const followUnfollowFlow = async (dispatch: Dispatch<ActionsTypes>, userId: numb
 
 export const follow = (userId: number): ThunkType => {
   return async (dispatch) => {
-    followUnfollowFlow(dispatch, userId, userAPI.follow.bind(userAPI), actions.followSuccess)
+    await followUnfollowFlow(dispatch, userId, userAPI.follow.bind(userAPI), actions.followSuccess)
   } 
 }
 
 export const unfollow = (userId: number): ThunkType => {
   return async (dispatch) => {
-    followUnfollowFlow(dispatch, userId, userAPI.unfollow.bind(userAPI), actions.unfollowSuccess)
+    await followUnfollowFlow(dispatch, userId, userAPI.unfollow.bind(userAPI), actions.unfollowSuccess)
   } 
 }
 

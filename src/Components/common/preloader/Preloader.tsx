@@ -1,9 +1,10 @@
 import React from 'react'
-import preloader from './Preloader.css'
+import './Preloader.css'
 
-let Preloader = () => {
+type PropsType = {}
+let Preloader: React.FC<PropsType> = () => {
    return (
-      <div className={preloader} >
+      <div>
          <div className='lds-dual-ring'></div>
       </div>
    )
