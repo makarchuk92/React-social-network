@@ -3,6 +3,7 @@ import module from "./Users.module.css";
 import Paginator from "./Paginator/Paginator";
 import User from "./User/User";
 import { UserType } from "../../Types/types";
+import UsersSearchForm from "./UsersSearchForm";
 
 type PropsType = {
   currentPage: number
@@ -15,12 +16,12 @@ type PropsType = {
   follow: (userId: number) => void
 }
 
-let Users: React.FC<PropsType> = ({currentPage, pageSize, onPageChanget, totalUsersCount,
-   users, follow, unfollow, followingInProgress}) => {
+let Users: React.FC<PropsType> = ({ currentPage, pageSize, onPageChanget, totalUsersCount,
+  users, follow, unfollow, followingInProgress }) => {
   return (
     <div className={module.Offer}>
-    
-      <Paginator 
+      <UsersSearchForm />
+      <Paginator
         currentPage={currentPage}
         pageSize={pageSize}
         onPageChanget={onPageChanget}

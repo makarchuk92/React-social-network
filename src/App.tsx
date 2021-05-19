@@ -2,9 +2,8 @@ import React from "react";
 import "./App.css";
 import {Redirect, Route, Switch, withRouter } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
+import { Provider, connect } from "react-redux";
 import { compose } from "redux";
-import { connect } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
 import { hookSuspense } from "./hoc/hookSuspense";
 import store, { AppStateType } from "./redux/redux-store"
