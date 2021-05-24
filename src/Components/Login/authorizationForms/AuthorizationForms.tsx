@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, InjectedFormProps } from 'redux-form'
 import { maxLengthCreator, required } from '../../../utils/validators'
 import { createField, Input, GetStringKeys } from '../../common/FormsControls/FormsControls';
-import {  LoginOwnPropsType } from '../Login';
+import {  LoginOwnPropsType } from '../LoginPage';
 import module from './authorizationForms.module.css'
 
 

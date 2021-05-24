@@ -10,10 +10,11 @@ import store, { AppStateType } from "./redux/redux-store"
 import Header from "./Components/Header/Header";
 import PostsContainer from "./Components/Posts/PostsContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
-import UsersContainer from "./Components/Users/UsersContainer";
 import NavigationsContainer from "./Components/Navigations/NavigationsContainer";
 import Error404 from "./Components/Error404/Error404";
 import Preloader from "./Components/common/preloader/Preloader";
+import { UsersPage } from "./Components/Users/UsersPage";
+import { LoginPage } from "./Components/Login/LoginPage";
 
 
 
@@ -21,7 +22,7 @@ import Preloader from "./Components/common/preloader/Preloader";
 const ListJunior = React.lazy(() => import('./Components/TextItemList/ListJunior/ListJunior'))
 const ListMidle = React.lazy(() => import('./Components/TextItemList/ListMidle/ListMidle'))
 const ListSenior = React.lazy(() => import('./Components/TextItemList/ListSenior/ListSenior'))
-const Login = React.lazy(() => import('./Components/Login/Login'))
+
 
 
 type MapStatePropsType = ReturnType<typeof mapStateToProps>
@@ -49,8 +50,8 @@ class App extends React.Component<PropsType> {
             <Route path="/Junior" render={hookSuspense(ListJunior)} />
             <Route path="/Midle" render={hookSuspense(ListMidle)} />
             <Route path="/Senior" render={hookSuspense(ListSenior)} />
-            <Route path="/Users" render={ () => <UsersContainer />} />
-            <Route path="/Login" render={hookSuspense(Login)} />
+            <Route path="/Users" render={ () => <UsersPage /> } />
+            <Route path="/Login" render={hookSuspense(LoginPage)} />
             <Route path="*" render={() => <Error404 /> } />
           </Switch>
         </div>
