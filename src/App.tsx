@@ -1,13 +1,14 @@
 import React from "react";
 import "./App.css";
-import {Redirect, Route, Switch, withRouter } from "react-router-dom";
+import 'antd/dist/antd.css'
+import { Link, Redirect, Route, Switch, withRouter } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider, connect } from "react-redux";
 import { compose } from "redux";
 import { initializeApp } from "./redux/app-reducer";
 import { hookSuspense } from "./hoc/hookSuspense";
 import store, { AppStateType } from "./redux/redux-store"
-import Header from "./Components/Header/Header";
+//import Header from "./Components/Header/Header";
 import PostsContainer from "./Components/Posts/PostsContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import NavigationsContainer from "./Components/Navigations/NavigationsContainer";
@@ -17,7 +18,11 @@ import { UsersPage } from "./Components/Users/UsersPage";
 import { LoginPage } from "./Components/Login/LoginPage";
 
 
+import { Layout, Menu, Breadcrumb } from 'antd';
+import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 
+const { SubMenu } = Menu;
+const { Header, Content, Footer, Sider } = Layout;
 
 const ListJunior = React.lazy(() => import('./Components/TextItemList/ListJunior/ListJunior'))
 const ListMidle = React.lazy(() => import('./Components/TextItemList/ListMidle/ListMidle'))
@@ -36,27 +41,93 @@ class App extends React.Component<PropsType> {
     this.props.initializeApp()
   }
   render() {
-    if(!this.props.inicialized) {
-    return <Preloader /> }
-  return (
-      <div className="app-wrapper">
-        <div className="wrapper-container">
-          <NavigationsContainer />
-          <Header />
-          <Switch>   
-            <Route exact path="/" render={ () => <Redirect to={"/Profile"} /> }/>
-            <Route path="/dialogs" render={ () => <DialogsContainer /> }/>
-            <Route path="/Profile/:userId?" render={ () => <PostsContainer /> }/>
-            <Route path="/Junior" render={hookSuspense(ListJunior)} />
-            <Route path="/Midle" render={hookSuspense(ListMidle)} />
-            <Route path="/Senior" render={hookSuspense(ListSenior)} />
-            <Route path="/Users" render={ () => <UsersPage /> } />
-            <Route path="/Login" render={hookSuspense(LoginPage)} />
-            <Route path="*" render={() => <Error404 /> } />
-          </Switch>
-        </div>
-      </div>
-  )};
+    if (!this.props.inicialized) {
+      return <Preloader />
+    }
+    return (
+      <Layout>
+        {/* <NavigationsContainer /> */}
+        <Header className="header">
+          <div className="logo" />
+          
+          {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+            <Menu.Item key="1">nav 1</Menu.Item>
+            <Menu.Item key="2">nav 2</Menu.Item>
+            <Menu.Item key="3">nav 3</Menu.Item>
+          </Menu> */}
+        </Header>
+        <Content style={{ padding: '0 50px' }} className="app-wrapper" >
+          {/* <Breadcrumb style={{ margin: '16px 0' }} >
+            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb> */}
+          <Layout className="site-layout-background app-wrapper"   >
+            <Sider className="site-layout-background" width={200} >
+              <Menu
+              className="SubMenu"
+                mode="inline"
+                defaultSelectedKeys={['1']}
+                defaultOpenKeys={['sub1']}
+                style={{ height: '100%' }}
+              >
+                <SubMenu key="sub1" icon={<UserOutlined />} title="Menu" className="SubMenu_item" >
+                  <Menu.Item key="1" ><Link to='/Users' >Users</Link></Menu.Item>
+                  <Menu.Item key="2" ><Link to='/dialogs' >Messages</Link></Menu.Item>
+                  <Menu.Item key="3" ><Link to='/Profile' >Profile</Link></Menu.Item>
+                </SubMenu>
+                <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
+                  <Menu.Item key="5">option5</Menu.Item>
+                  <Menu.Item key="6">option6</Menu.Item>
+                  <Menu.Item key="7">option7</Menu.Item>
+                </SubMenu>
+                <SubMenu key="sub3" icon={<NotificationOutlined />} title="subnav 3">
+                  <Menu.Item key="9">option9</Menu.Item>
+                  <Menu.Item key="10">option10</Menu.Item>
+                  <Menu.Item key="11">option11</Menu.Item>
+                </SubMenu>
+              </Menu>
+            </Sider>
+            <Content style={{ padding: '0 24px', minHeight: 280,  }} className="app-wrapper">
+              <Switch>
+                <Route exact path="/" render={() => <Redirect to={"/Profile"} />} />
+                <Route path="/dialogs" render={() => <DialogsContainer />} />
+                <Route path="/Profile/:userId?" render={() => <PostsContainer />} />
+                <Route path="/Junior" render={hookSuspense(ListJunior)} />
+                <Route path="/Midle" render={hookSuspense(ListMidle)} />
+                <Route path="/Senior" render={hookSuspense(ListSenior)} />
+                <Route path="/Users" render={() => <UsersPage />} />
+                <Route path="/Login" render={hookSuspense(LoginPage)} />
+                <Route path="*" render={() => <Error404 />} />
+              </Switch>
+            </Content>
+          </Layout>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+      </Layout>
+
+
+
+
+      // <div className="app-wrapper">
+      //   <div className="wrapper-container">
+      //     <NavigationsContainer />
+      //     <Header />
+      //     <Switch>   
+      //       <Route exact path="/" render={ () => <Redirect to={"/Profile"} /> }/>
+      //       <Route path="/dialogs" render={ () => <DialogsContainer /> }/>
+      //       <Route path="/Profile/:userId?" render={ () => <PostsContainer /> }/>
+      //       <Route path="/Junior" render={hookSuspense(ListJunior)} />
+      //       <Route path="/Midle" render={hookSuspense(ListMidle)} />
+      //       <Route path="/Senior" render={hookSuspense(ListSenior)} />
+      //       <Route path="/Users" render={ () => <UsersPage /> } />
+      //       <Route path="/Login" render={hookSuspense(LoginPage)} />
+      //       <Route path="*" render={() => <Error404 />   } />
+      //     </Switch>
+      //   </div>
+      // </div>
+    )
+  };
 };
 
 
@@ -66,18 +137,18 @@ const mapStateToProps = (state: AppStateType) => ({
 
 const AppContainer = compose<React.ComponentType>(
   withRouter,
-  connect(mapStateToProps, {initializeApp})) (App)
+  connect(mapStateToProps, { initializeApp }))(App)
 
 const MainApp: React.FC = () => {
   return (
     <BrowserRouter>
-        <Provider store={store}>
-          <AppContainer />
-        </Provider>
-      </BrowserRouter> 
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </BrowserRouter>
   )
-} 
+}
 
 export default MainApp
 
- 
+

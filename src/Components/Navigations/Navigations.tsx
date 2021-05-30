@@ -17,9 +17,9 @@ const Navigations: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) 
    return (
      <div className={module.block_nav}>
        <NavigationsLogo /> 
-        <div className={module.Nav}>
+        {/* <div className={module.Nav}>
           <NavigationsLi />
-        </div>
+        </div> */}
         <div className={module.login} >
           {props.isAuth ? <div>{props.login} 
           <NavLink onClick={props.logout} to='/login' className={module.logout} >log out</NavLink></div> 

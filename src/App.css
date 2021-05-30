@@ -14,13 +14,23 @@ button:focus {
  
 
 .app-wrapper { 
-   background: linear-gradient(96deg, rgba(73, 26, 184, 0.904) 0%, rgba(73, 26, 184,1) 100%);
+   background: linear-gradient(96deg, rgba(73, 26, 184, 0.904) 0%, rgb(93, 78, 126) 100%);
 }
 
 .wrapper-container {
   width: 1140px;
   margin: 0 auto;
   border: 1px dashed rgba(201, 157, 243, 0.089);
+}
+
+.SubMenu ul li {
+  background: linear-gradient(96deg, rgba(73, 26, 184, 0.904) 0%, rgb(93, 78, 126) 100%);
+  
+}
+
+.SubMenu_item ul li a{
+  color: #fff;
+  cursor: pointer;
 }
 
 
