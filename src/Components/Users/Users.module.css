@@ -1,4 +1,13 @@
+.btn {
+    background: none;
+    color: #fff;
+    border: none;
+}
 
+.btn:hover {
+    background: linear-gradient(96deg, rgba(178, 146, 243, 0.9) 0%, rgb(206, 191, 243) 100%);
+    color: black;
+}
 
  .Offer {
     text-align: center;

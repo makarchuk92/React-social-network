@@ -1,34 +1,43 @@
 import React from 'react';
 import NavigationsLogo from './NavigationsLogo/NavigationsLogo'
-import NavigationsLi from './NavigationsLi/NavigationsLi'
 import module from './Navigations.module.css';
-import { NavLink } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import {Button, Col, Layout, Row} from "antd";
+import {useDispatch, useSelector} from "react-redux";
+import {selectIsAuth, selectUserLogin} from "../../redux/auth-selectors";
+import {logout} from "../../redux/auth-reducer";
 
-export type MapStatePropsType = {
-  isAuth: boolean
-  login: string | null
-}
 
-export type MapDispatchPropsType = {
-  logout: () => void 
-}
+export type MapStatePropsType = {}
 
-const Navigations: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
-   return (
-     <div className={module.block_nav}>
-       <NavigationsLogo /> 
-        {/* <div className={module.Nav}>
-          <NavigationsLi />
-        </div> */}
-        <div className={module.login} >
-          {props.isAuth ? <div>{props.login} 
-          <NavLink onClick={props.logout} to='/login' className={module.logout} >log out</NavLink></div> 
-           : <NavLink to='/login'>login in</NavLink> }
-        </div>
-     </div>
-    
-   )
- }
+export const Navigations: React.FC<MapStatePropsType> =
+    (props) => {
+        const isAuth = useSelector(selectIsAuth)
+        const login = useSelector(selectUserLogin)
 
- export default Navigations;
+        const dispatch = useDispatch()
+
+        const logoutCallback = () => {
+            dispatch(logout())
+        }
+        const {Header} = Layout;
+        return (
+            <Header className="header">
+                <Row>
+                    <Col span={18}>
+                        <NavigationsLogo/>
+                    </Col>
+                    {isAuth ? <>
+                            <Col span={2}><h5>{login}</h5></Col>
+                            <Col span={4}>
+                                <Button onClick={logoutCallback} className={module.logout}>log out</Button>
+                            </Col></>
+                        : <Col span={5}>
+                            <Link className={module.login} to={'/login'}>login in</Link>
+                        </Col>}
+                </Row>
+            </Header>
+        )
+    }
+
 

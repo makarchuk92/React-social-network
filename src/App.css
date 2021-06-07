@@ -33,5 +33,11 @@ button:focus {
   cursor: pointer;
 }
 
+.footers {
+  background: #43375d;
+  color: #fff;
+  max-height: 10Vh;
+}
+
 
 

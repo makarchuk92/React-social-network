@@ -1,8 +1,11 @@
 import { Field, Form, Formik } from 'formik';
 import React from 'react'
+import module from './Users.module.css'
 import { useSelector } from 'react-redux';
 import { getUsersFilter } from '../../redux/users-selectors';
 import { FilterType } from '../../redux/usersReducer';
+import {Button, Tooltip} from "antd";
+import { SearchOutlined } from '@ant-design/icons';
 
 const usersSearchFormValidate = (values: any) => {
    const errors = {};
@@ -45,7 +48,11 @@ const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
                   <option value="true">Followed</option>
                   <option value="false">Unfollowed</option>
                </Field>
-               <button type="submit" disabled={isSubmitting}> Find </button>
+                <Tooltip title="search">
+                    <Button  disabled={isSubmitting} htmlType="submit" type="primary"
+                             shape="circle" icon={<SearchOutlined />} className={module.btn} />
+                </Tooltip>
+               {/*<button type="submit" disabled={isSubmitting}> Find </button>*/}
             </Form>
          )}
       </Formik>

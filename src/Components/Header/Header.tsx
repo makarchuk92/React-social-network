@@ -6,7 +6,6 @@ import module from './Header.module.css';
 const Header = () => {
    return (
     <div className={module.About}>
-      <HeaderMenu />
       <div className={module.Content}>
         <HeaderPage />  
       </div>

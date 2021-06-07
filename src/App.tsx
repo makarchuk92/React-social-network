@@ -11,7 +11,7 @@ import store, { AppStateType } from "./redux/redux-store"
 //import Header from "./Components/Header/Header";
 import PostsContainer from "./Components/Posts/PostsContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
-import NavigationsContainer from "./Components/Navigations/NavigationsContainer";
+
 import Error404 from "./Components/Error404/Error404";
 import Preloader from "./Components/common/preloader/Preloader";
 import { UsersPage } from "./Components/Users/UsersPage";
@@ -20,6 +20,8 @@ import { LoginPage } from "./Components/Login/LoginPage";
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import {Navigations} from "./Components/Navigations/Navigations";
+
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
@@ -46,29 +48,15 @@ class App extends React.Component<PropsType> {
     }
     return (
       <Layout>
-        {/* <NavigationsContainer /> */}
-        <Header className="header">
-          <div className="logo" />
-          
-          {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
-          </Menu> */}
-        </Header>
-        <Content style={{ padding: '0 50px' }} className="app-wrapper" >
-          {/* <Breadcrumb style={{ margin: '16px 0' }} >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb> */}
+       <Navigations  />
+        <Content  className="app-wrapper" >
           <Layout className="site-layout-background app-wrapper"   >
             <Sider className="site-layout-background" width={200} >
               <Menu
               className="SubMenu"
                 mode="inline"
                 defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
+                // defaultOpenKeys={['sub1']}
                 style={{ height: '100%' }}
               >
                 <SubMenu key="sub1" icon={<UserOutlined />} title="Menu" className="SubMenu_item" >
@@ -77,9 +65,9 @@ class App extends React.Component<PropsType> {
                   <Menu.Item key="3" ><Link to='/Profile' >Profile</Link></Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
-                  <Menu.Item key="5">option5</Menu.Item>
-                  <Menu.Item key="6">option6</Menu.Item>
-                  <Menu.Item key="7">option7</Menu.Item>
+                  <Menu.Item key="5"><Link to='/Junior' >Junior</Link></Menu.Item>
+                  <Menu.Item key="6"><Link to='/Midle' >Midle</Link></Menu.Item>
+                  <Menu.Item key="7"><Link to='/Senior' >Senior</Link></Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub3" icon={<NotificationOutlined />} title="subnav 3">
                   <Menu.Item key="9">option9</Menu.Item>
@@ -103,7 +91,7 @@ class App extends React.Component<PropsType> {
             </Content>
           </Layout>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        <Footer style={{ textAlign: 'center', background: '#43375d',color: '#fff' }} className="footers">Ant Design ©2018 Created by Ant UED</Footer>
       </Layout>
 
 

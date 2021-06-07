@@ -1,6 +1,7 @@
-import classNames from "classnames"
 import React, { useState } from "react"
 import module from "./Paginator.module.css"
+import classNames from "classnames"
+
 
 
 type PropsType = {
