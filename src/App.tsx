@@ -8,7 +8,6 @@ import { compose } from "redux";
 import { initializeApp } from "./redux/app-reducer";
 import { hookSuspense } from "./hoc/hookSuspense";
 import store, { AppStateType } from "./redux/redux-store"
-//import Header from "./Components/Header/Header";
 import PostsContainer from "./Components/Posts/PostsContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 
@@ -29,6 +28,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const ListJunior = React.lazy(() => import('./Components/TextItemList/ListJunior/ListJunior'))
 const ListMidle = React.lazy(() => import('./Components/TextItemList/ListMidle/ListMidle'))
 const ListSenior = React.lazy(() => import('./Components/TextItemList/ListSenior/ListSenior'))
+const SuspendedChatPage = React.lazy(() => import('./Components/ChatPage/ChatPage'))
 
 
 
@@ -47,11 +47,11 @@ class App extends React.Component<PropsType> {
       return <Preloader />
     }
     return (
-      <Layout>
+      <Layout  >
        <Navigations  />
-        <Content  className="app-wrapper" >
-          <Layout className="site-layout-background app-wrapper"   >
-            <Sider className="site-layout-background" width={200} >
+        <Content  className="app-wrapper"  >
+          <Layout className="site-layout-background app-wrapper"  >
+            <Sider className="site-layout-background" width={200}  style={{height: "100vh"}}>
               <Menu
               className="SubMenu"
                 mode="inline"
@@ -70,7 +70,7 @@ class App extends React.Component<PropsType> {
                   <Menu.Item key="7"><Link to='/Senior' >Senior</Link></Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub3" icon={<NotificationOutlined />} title="subnav 3">
-                  <Menu.Item key="9">option9</Menu.Item>
+                  <Menu.Item key="9"><Link to='/ChatPage' >Chat</Link></Menu.Item>
                   <Menu.Item key="10">option10</Menu.Item>
                   <Menu.Item key="11">option11</Menu.Item>
                 </SubMenu>
@@ -86,12 +86,14 @@ class App extends React.Component<PropsType> {
                 <Route path="/Senior" render={hookSuspense(ListSenior)} />
                 <Route path="/Users" render={() => <UsersPage />} />
                 <Route path="/Login" render={hookSuspense(LoginPage)} />
+                <Route path="/ChatPage" render={hookSuspense(SuspendedChatPage)} />
                 <Route path="*" render={() => <Error404 />} />
               </Switch>
             </Content>
           </Layout>
         </Content>
-        <Footer style={{ textAlign: 'center', background: '#43375d',color: '#fff' }} className="footers">Ant Design ©2018 Created by Ant UED</Footer>
+        <Footer style={{ textAlign: 'center', background: '#43375d',color: '#fff' }} className="footers">
+          Social Network ©2021 Created by Makarchuk</Footer>
       </Layout>
 
 
