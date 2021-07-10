@@ -1,4 +1,5 @@
 import React from 'react'
+import module from './ProfileStatus.module.css';
 
 type PropsType = {
    status: string
@@ -34,8 +35,8 @@ class ProfileStatus extends React.Component<PropsType, StateType> {
       })
    }
 
-   componentDidUpdate (prevProps: PropsType, prevState: StateType) {
-      if(prevProps.status !== this.props.status) {
+   componentDidUpdate(prevProps: PropsType, prevState: StateType) {
+      if (prevProps.status !== this.props.status) {
          this.setState({
             status: this.props.status
          })
@@ -43,15 +44,17 @@ class ProfileStatus extends React.Component<PropsType, StateType> {
    }
 
    render() {
-   return (
-      <div>
-         {!this.state.editMode &&
-         <p onClick={this.activateEditMode} >{this.props.status || "No status"}</p>} 
-         <h1>Andrei</h1>       
-         {this.state.editMode &&
-         <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} type="text" value={this.state.status} />}
-      </div>
-      ) 
+      return (
+         <div >
+            {!this.state.editMode &&
+               <p className={module.status} onClick={this.activateEditMode} >{this.props.status || "No status"}</p>}
+            {this.state.editMode &&
+               <div className={module.text}>
+                  <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode}
+                     type="text" value={this.state.status} />
+               </div>}
+         </div>
+      )
    }
 }
 

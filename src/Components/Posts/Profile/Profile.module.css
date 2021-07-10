@@ -72,5 +72,19 @@
    margin-left: 25%;
 }
 
+.contacts button {
+   background: none;
+   border: none;
+   cursor: pointer;
+   color: rgba(255, 255, 255, 0.397);
+   transition: all 0.5s ease;
+}
 
+.contacts:hover button {
+   color: #fff;
+}
 
+.text {
+   background: #000;
+   color: #fff;
+}

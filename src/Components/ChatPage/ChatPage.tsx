@@ -10,16 +10,17 @@ import { AppStateType } from "../../redux/redux-store"
 
 
 const ChatPage: React.FC = () => {
-    return (
-        <div>
-            <Chat />
-        </div>
-    )
+    return  <div>
+                <Chat />
+            </div>
+    
 }
 
 const Chat: React.FC = () => {
 
     const dispatch = useDispatch()
+
+    const status = useSelector((state: AppStateType) => state.chat.status)
 
     useEffect(() => {
         dispatch(startMessagesListening())
@@ -27,20 +28,20 @@ const Chat: React.FC = () => {
             dispatch(stopMessagesListening())
         }
     }, [])
-   
 
 
 
-    return (
-        <div>
-            <Messages  />
-            <AddMessageChatForm  />
+
+    return  <div>
+            {status === 'error' && <div>Please, refresh the page</div>}
+                <>
+                    <Messages />
+                    <AddMessageChatForm />
+                </>  
         </div>
-
-    )
 }
 
-const Messages: React.FC<{ }> = () => {
+const Messages: React.FC<{}> = () => {
     const messages = useSelector((state: AppStateType) => state.chat.messages)
 
     return (
@@ -61,11 +62,11 @@ const Message: React.FC<{ message: ChatMessageType }> = ({ message }) => {
     )
 }
 
-const AddMessageChatForm: React.FC<{ }> = () => {
+const AddMessageChatForm: React.FC<{}> = () => {
     const [message, setMessage] = useState('')
     const dispatch = useDispatch()
-
     const status = useSelector((state: AppStateType) => state.chat.status)
+
 
 
     const sendMessageHamdler = () => {
@@ -75,13 +76,14 @@ const AddMessageChatForm: React.FC<{ }> = () => {
         dispatch(sendMessage(message))
         setMessage('')
     }
-    return (
+
+    return ( 
         <div>
             <div>
                 <textarea onChange={(e) => setMessage(e.currentTarget.value)} value={message}></textarea>
             </div>
             <div>
-                <Button disabled={status !== 'ready'} onClick={sendMessageHamdler} type="primary">
+                <Button  disabled={status !== 'ready'} onClick={sendMessageHamdler} type="primary">
                     send</Button>
             </div>
         </div>
