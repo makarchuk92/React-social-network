@@ -2,11 +2,13 @@ import { Dispatch } from 'redux';
 import { chatApi, ChatMessageType, StatusType } from './../api/chat-api';
 import { stopSubmit } from "redux-form";
 import { BaseThunkType, InferActionsTypes } from "./redux-store";
+import { v1 } from 'uuid';
 
 
+type ChatType = ChatMessageType & {id: string}
 
 let inicialState = {
-  messages: [] as ChatMessageType[],
+  messages: [] as ChatType[],
   status: 'pending' as StatusType
 }
 export type inicialStateType = typeof inicialState
@@ -18,7 +20,8 @@ export const chatReducer = (state = inicialState, action: ActionsTypes): inicial
     case 'chat/MESSAGES_RECEIVED':
       return {
         ...state,
-        messages: [...state.messages, ...action.payload.messages]
+        messages: [...state.messages, ...action.payload.messages.map(m => ({...m, id: v1()}))].
+        filter((m, index, array) => index >= array.length - 50)
       }
     case 'chat/STATUS_CHANGED':
       return {

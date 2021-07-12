@@ -48,15 +48,15 @@ const Messages: React.FC<{}> = () => {
 
     const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
         const element = e.currentTarget
-        if(Math.abs( (element.scrollHeight - element.scrollTop) - element.clientHeight) < 300 ) {
+        if (Math.abs((element.scrollHeight - element.scrollTop) - element.clientHeight) < 300) {
             !isAutoScroll && setIsAutoScroll(true)
-        }else{
+        } else {
             isAutoScroll && setIsAutoScroll(false)
         }
     }
 
     useEffect(() => {
-        if(isAutoScroll) {
+        if (isAutoScroll) {
             messagesAnchorRef.current?.scrollIntoView({ behavior: 'auto' })
         }
     }, [messages])
@@ -64,22 +64,21 @@ const Messages: React.FC<{}> = () => {
 
     return (
         <div style={{ height: "400px", overflowY: "auto" }} onScroll={scrollHandler} >
-            {messages.map((m, index) => <Message message={m} key={index} />)}
+            {messages.map((m, index) => <Message message={m} key={m.id} />)}
             <div ref={messagesAnchorRef}></div>
         </div>
     )
 }
 
-const Message: React.FC<{ message: ChatMessageType }> = ({ message }) => {
+const Message: React.FC<{ message: ChatMessageType }> = React.memo(({ message }) => {
     return (
         <div>
             <img src={message.photo} alt="logo" style={{ width: "30px" }} /> <h2>{message.userName}</h2>
             {message.message}
             <hr />
         </div>
-
     )
-}
+})
 
 const AddMessageChatForm: React.FC<{}> = () => {
     const [message, setMessage] = useState('')
